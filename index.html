@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>John Leanard | Workflow Automation & AI Systems Specialist</title>
-  <meta name="description" content="Operations and Workflow Automation Specialist engineering scalable back-office systems, 24/7 conversational AI agents, and frictionless integrations.">
+  <title>John Leanard | AI Automation & Systems Specialist</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -17,7 +16,9 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- Tailwind Configuration -->
+  <!-- AOS (Animate on Scroll) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -34,26 +35,25 @@
               600: '#4f46e5',
             },
             dark: {
-              950: '#07090e',
-              900: '#0c1017',
-              850: '#111722',
-              800: '#172030',
-              700: '#233047'
+              900: '#070a11',
+              850: '#0d121f',
+              800: '#141c2e',
+              700: '#1e293b'
             }
           },
           animation: {
-            'marquee': 'marquee 28s linear infinite',
-            'marquee-reverse': 'marquee-reverse 28s linear infinite',
             'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'border-glow': 'borderGlow 8s ease infinite',
           },
           keyframes: {
-            marquee: {
-              '0%': { transform: 'translateX(0%)' },
-              '100%': { transform: 'translateX(-50%)' },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-8px)' },
             },
-            'marquee-reverse': {
-              '0%': { transform: 'translateX(-50%)' },
-              '100%': { transform: 'translateX(0%)' },
+            borderGlow: {
+              '0%, 100%': { 'border-color': 'rgba(99, 102, 241, 0.4)' },
+              '50%': { 'border-color': 'rgba(168, 85, 247, 0.6)' },
             }
           }
         }
@@ -61,778 +61,621 @@
     }
   </script>
 
-  <!-- Custom Aesthetics & Keyframe Transitions -->
   <style>
-    /* Ambient Glow & Noise Background */
-    body {
-      background-color: #07090e;
-      background-image: 
-        radial-gradient(at 20% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
-        radial-gradient(at 80% 20%, rgba(168, 85, 247, 0.09) 0px, transparent 40%),
-        radial-gradient(at 50% 90%, rgba(20, 184, 166, 0.08) 0px, transparent 50%);
-      background-attachment: fixed;
+    /* Mesh Ambient Glow */
+    .ambient-glow {
+      background: 
+        radial-gradient(circle at 50% -10%, rgba(99, 102, 241, 0.18), transparent 50%),
+        radial-gradient(circle at 10% 30%, rgba(14, 165, 233, 0.12), transparent 40%),
+        radial-gradient(circle at 90% 70%, rgba(168, 85, 247, 0.12), transparent 45%);
     }
 
-    /* Glassmorphic Cards */
+    /* Glassmorphism Cards */
     .glass-panel {
-      background: rgba(12, 16, 23, 0.72);
+      background: rgba(13, 18, 31, 0.72);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .glass-panel:hover {
-      border-color: rgba(99, 102, 241, 0.35);
+      border-color: rgba(99, 102, 241, 0.45);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 32px -10px rgba(99, 102, 241, 0.15);
     }
 
-    /* Gradient Text */
-    .text-gradient {
-      background: linear-gradient(135deg, #ffffff 30%, #cbd5e1 70%, #818cf8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    /* Interactive Tech Card micro-lift */
+    .tech-card {
+      background: rgba(20, 28, 46, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: all 0.25s ease-out;
+    }
+    .tech-card:hover {
+      background: rgba(30, 41, 59, 0.75);
+      border-color: rgba(129, 140, 248, 0.4);
+      transform: translateY(-2px) scale(1.02);
     }
 
-    /* Range Input Custom Styling */
-    input[type=range] {
-      -webkit-appearance: none;
-      background: #1e293b;
-      height: 6px;
+    /* Profile Avatar Glow */
+    .avatar-wrapper {
+      position: relative;
+    }
+    .avatar-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
       border-radius: 9999px;
+      background: linear-gradient(135deg, #6366f1, #a855f7, #06b6d4);
+      z-index: 0;
+      opacity: 0.85;
+      filter: blur(4px);
+      transition: opacity 0.3s ease;
     }
-    input[type=range]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      height: 18px;
-      width: 18px;
-      border-radius: 50%;
-      background: #6366f1;
-      cursor: pointer;
-      box-shadow: 0 0 12px rgba(99, 102, 241, 0.7);
-      transition: all 0.15s ease-in-out;
-    }
-    input[type=range]::-webkit-slider-thumb:hover {
-      transform: scale(1.2);
+    .avatar-wrapper:hover::before {
+      opacity: 1;
+      filter: blur(7px);
     }
   </style>
 </head>
-<body class="text-slate-100 antialiased selection:bg-indigo-500 selection:text-white flex flex-col min-h-screen">
 
-  <!-- Toast Notification element -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-3 px-4 py-3 rounded-xl bg-slate-900/95 border border-indigo-500/50 text-white shadow-2xl text-xs font-semibold shadow-indigo-500/20 backdrop-blur-md">
-    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
-    <span id="toast-message">Copied to clipboard!</span>
+<body class="bg-dark-900 text-slate-100 antialiased selection:bg-brand-500 selection:text-white relative min-h-screen ambient-glow">
+
+  <!-- Floating Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none bg-indigo-900 border border-indigo-500/50 text-white text-xs font-semibold px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2">
+    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+    <span>Email copied to clipboard!</span>
   </div>
 
-  <header class="sticky top-0 z-40 w-full backdrop-blur-md border-b border-white/[0.05] bg-dark-950/80">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      
-      <!-- Brand Logo / Identity -->
-      <a href="#" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 via-indigo-600 to-purple-600 flex items-center justify-center font-black text-white text-base shadow-lg shadow-indigo-600/25 group-hover:scale-105 transition duration-300">
-          JL
+  <!-- Modern Navigation Bar -->
+  <nav class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center relative z-40">
+    <div class="flex items-center gap-3">
+      <!-- Profile Badge / Mini Avatar -->
+      <div class="avatar-wrapper">
+        <div class="relative z-10 w-10 h-10 rounded-full overflow-hidden border-2 border-dark-900 bg-slate-800 flex items-center justify-center font-bold text-sm text-indigo-300">
+          <!-- GIF / Image Placeholder: Palitan ang src="" ng profile image o animated gif mo -->
+          <img id="navAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&h=120&q=80" alt="John Leanard" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+          <span style="display:none;" class="w-full h-full bg-gradient-to-tr from-brand-600 to-purple-600 items-center justify-center text-white font-extrabold text-sm">JL</span>
         </div>
-        <div>
-          <div class="font-bold text-sm text-white tracking-tight flex items-center gap-1.5">
-            John Leanard
-            <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-          </div>
-          <p class="text-[11px] text-slate-400 font-medium">Operations & AI Automation</p>
-        </div>
-      </a>
-
-      <!-- Desktop Nav Navigation -->
-      <nav class="hidden md:flex items-center gap-8 text-xs font-semibold text-slate-300">
-        <a href="#calculator" class="hover:text-indigo-400 transition">ROI Calculator</a>
-        <a href="#stack" class="hover:text-indigo-400 transition">Tech Stack</a>
-        <a href="#projects" class="hover:text-indigo-400 transition">Systems & Projects</a>
-      </nav>
-
-      <!-- Action Area -->
-      <div class="flex items-center gap-3">
-        <!-- One-Click Copy Email Button -->
-        <button onclick="copyEmail()" class="hidden sm:inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-dark-850 hover:bg-dark-800 border border-white/10 text-xs font-mono text-slate-300 hover:text-white transition group">
-          <i data-lucide="copy" class="w-3.5 h-3.5 text-indigo-400 group-hover:scale-110 transition"></i>
-          <span>johnleanardguiriba13@gmail.com</span>
-        </button>
-
-        <!-- Primary CTA -->
-        <a href="mailto:johnleanardguiriba13@gmail.com?subject=Automation%20Systems%20Inquiry" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow-lg shadow-indigo-600/25 transition duration-200">
-          <span>Hire Specialist</span>
-          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
-        </a>
       </div>
+      <div>
+        <span class="font-extrabold text-base tracking-tight text-white block leading-tight">John Leanard</span>
+        <span class="text-[11px] font-mono text-indigo-400 block tracking-wide">AI Systems & Automation</span>
+      </div>
+    </div>
+
+    <!-- Links & Quick Actions -->
+    <div class="flex items-center gap-5">
+      <div class="hidden md:flex items-center gap-6 text-xs font-medium text-slate-400">
+        <a href="#toolkit" class="hover:text-white transition">Tech Stack</a>
+        <a href="#case-studies" class="hover:text-white transition">Case Studies</a>
+        <a href="#calculator" class="hover:text-white transition">ROI Value</a>
+      </div>
+      <button onclick="copyEmail()" class="inline-flex items-center gap-2 bg-slate-800/80 hover:bg-slate-700/80 text-slate-200 border border-slate-700/70 px-3.5 py-2 rounded-lg transition text-xs font-medium backdrop-blur-sm group">
+        <i data-lucide="mail" class="w-3.5 h-3.5 text-indigo-400 group-hover:scale-110 transition"></i>
+        <span>Get in Touch</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Header Section -->
+  <header class="max-w-4xl mx-auto pt-16 pb-14 px-6 text-center relative z-20" data-aos="fade-up" data-aos-duration="900">
+    
+    <!-- Big Profile Image / GIF Container -->
+    <div class="flex justify-center mb-6">
+      <div class="avatar-wrapper group cursor-pointer animate-float">
+        <div class="relative z-10 w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-dark-900 bg-slate-800 shadow-2xl">
+          <!-- Main Profile Picture / GIF: Ilagay dito ang link o local filename ng iyong picture/gif hal. "profile.gif" -->
+          <img id="mainAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=260&h=260&q=80" alt="John Leanard" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" onerror="this.src='https://ui-avatars.com/api/?name=John+Leanard&background=4f46e5&color=fff&size=256'">
+        </div>
+        <!-- Status Indicator Ring -->
+        <span class="absolute bottom-1 right-1 z-20 w-5 h-5 rounded-full bg-emerald-500 border-4 border-dark-900 flex items-center justify-center" title="Available for Agency Projects">
+          <span class="w-2 h-2 rounded-full bg-white animate-ping opacity-75"></span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Availability Tag -->
+    <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-indigo-400 bg-indigo-950/60 border border-indigo-800/40 px-4 py-1.5 rounded-full shadow-inner mb-6">
+      <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+      Accepting International Contracts & Agency Builds
+    </div>
+
+    <!-- Main Value Proposition -->
+    <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.12]">
+      Eliminate 15+ Hours of Manual Work with <br class="hidden sm:inline">
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-300 to-cyan-400">Intelligent AI & Workflow Automations</span>
+    </h1>
+
+    <p class="mt-6 text-slate-400 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed font-normal">
+      I architect production-grade workflow engines, 24/7 conversational AI agents, and frictionless CRM pipelines that streamline business operations without extra overhead.
+    </p>
+
+    <!-- CTAs -->
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <a href="#case-studies" class="bg-brand-600 hover:bg-brand-500 text-white font-semibold text-xs sm:text-sm px-7 py-3.5 rounded-xl shadow-lg shadow-indigo-600/30 transition duration-300 transform hover:-translate-y-0.5 inline-flex items-center gap-2">
+        <span>Explore 6 Live Systems</span>
+        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </a>
+      <a href="mailto:johnleanardguiriba13@gmail.com" class="glass-panel hover:bg-slate-800/80 text-slate-300 font-semibold text-xs sm:text-sm px-6 py-3.5 rounded-xl transition duration-300 inline-flex items-center gap-2">
+        <i data-lucide="send" class="w-4 h-4 text-indigo-400"></i>
+        <span>Direct Email</span>
+      </a>
     </div>
   </header>
 
-  <section class="relative pt-20 pb-16 md:pt-28 md:pb-24 px-6 overflow-hidden">
-    <div class="max-w-5xl mx-auto text-center relative z-10">
-      
-      <!-- Status Badge -->
-      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-indigo-950/60 border border-indigo-500/30 text-indigo-300 text-xs font-medium mb-8 backdrop-blur-md shadow-inner">
-        <span class="relative flex h-2 w-2">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-        </span>
-        Accepting High-Impact Automation Contracts
-      </div>
-
-      <!-- Main Headline -->
-      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.1] mb-6">
-        Architecting Frictionless <br class="hidden sm:block">
-        <span class="text-gradient">Automations & AI Systems</span>
-      </h1>
-
-      <!-- Subtitle -->
-      <p class="max-w-2xl mx-auto text-slate-400 text-base sm:text-lg leading-relaxed mb-10">
-        I eliminate manual admin friction, qualify inbound prospects 24/7 with bespoke LLM agents, and build self-healing back-office pipelines for ambitious digital agencies and founders.
-      </p>
-
-      <!-- CTA Buttons Group -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 text-xs font-bold">
-        <a href="#projects" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white shadow-xl shadow-indigo-600/30 transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
-          <i data-lucide="layers" class="w-4 h-4"></i>
-          <span>Inspect Architecture Case Studies</span>
-        </a>
-        <button onclick="copyEmail()" class="w-full sm:w-auto px-6 py-3.5 rounded-xl glass-panel hover:bg-dark-800 text-slate-300 hover:text-white transition flex items-center justify-center gap-2">
-          <i data-lucide="mail" class="w-4 h-4 text-indigo-400"></i>
-          <span>Copy Direct Email</span>
-        </button>
-      </div>
-
-      <!-- Live Performance Stat Chips -->
-      <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-left">
-        <div class="glass-panel p-4 rounded-xl">
-          <div class="text-indigo-400 font-mono text-xl font-bold">0 mins</div>
-          <div class="text-slate-400 text-xs mt-0.5">Average Lead Response Lag</div>
-        </div>
-        <div class="glass-panel p-4 rounded-xl">
-          <div class="text-purple-400 font-mono text-xl font-bold">100%</div>
-          <div class="text-slate-400 text-xs mt-0.5">Automated Data Accuracy</div>
-        </div>
-        <div class="glass-panel p-4 rounded-xl">
-          <div class="text-emerald-400 font-mono text-xl font-bold">15+ hrs</div>
-          <div class="text-slate-400 text-xs mt-0.5">Saved Weekly per Founder</div>
-        </div>
-        <div class="glass-panel p-4 rounded-xl">
-          <div class="text-amber-400 font-mono text-xl font-bold">24/7</div>
-          <div class="text-slate-400 text-xs mt-0.5">Client Qualification Uptime</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="stack" class="py-16 border-y border-white/[0.05] bg-dark-900/40 relative">
-    <div class="max-w-7xl mx-auto px-6 mb-8 text-center">
-      <h2 class="text-xs font-bold uppercase tracking-widest text-indigo-400 mb-2 font-mono">Ecosystem & Tooling</h2>
-      <p class="text-xl sm:text-2xl font-bold text-white tracking-tight">Seamlessly Integrated Across Industry Standard Apps</p>
-      <p class="text-xs text-slate-400 mt-1 max-w-lg mx-auto">Production-grade triggers, custom webhooks, REST APIs, and multi-branch logic.</p>
+  <!-- Animated Tech Stack & Toolkit Showcase (with Logos) -->
+  <section id="toolkit" class="max-w-6xl mx-auto px-6 py-16 relative z-20" data-aos="fade-up" data-aos-duration="1000">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-indigo-400 mb-2">Architectural Stack</h2>
+      <h3 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Tools & Applications I Deploy</h3>
+      <p class="text-slate-400 text-sm mt-2">Comprehensive integration capabilities across industry-standard automation engines, AI models, and CRM infrastructure.</p>
     </div>
 
-    <!-- Infinite Animated Marquee Ribbon -->
-    <div class="overflow-hidden relative w-full py-4 [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
-      <div id="marquee-track" class="flex gap-6 w-max animate-marquee">
-        <!-- Marquee items populated dynamically by JavaScript to keep extensible -->
-      </div>
-    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-    <!-- Modular Tech Capabilities Matrix -->
-    <div class="max-w-7xl mx-auto px-6 mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-      
-      <!-- Logic & Automation Engine -->
-      <div class="glass-panel rounded-2xl p-6 relative overflow-hidden group">
+      <!-- Group 1: Core Automation Engines -->
+      <div class="glass-panel rounded-2xl p-6">
         <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
-            <i data-lucide="zap" class="w-5 h-5"></i>
+          <div class="w-8 h-8 rounded-lg bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
+            <i data-lucide="zap" class="w-4 h-4"></i>
           </div>
           <div>
-            <h3 class="font-bold text-white text-sm">Orchestration & Logic</h3>
-            <p class="text-[11px] text-slate-400">Triggers, Routers, Paths & Webhooks</p>
-          </div>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-dark-850 border border-white/5 text-xs text-slate-300">
-            <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span> Zapier
-          </span>
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-dark-850 border border-white/5 text-xs text-slate-300">
-            <span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span> Make (Integromat)
-          </span>
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-dark-850 border border-white/5 text-xs text-slate-300">
-            <span class="w-1.5 h-1.5 rounded-full bg-pink-500"></span> n8n Workflow Automation
-          </span>
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-dark-850 border border-white/5 text-xs text-slate-300">
-            <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Custom Webhooks & Catch Hooks
-          </span>
-        </div>
-      </div>
-
-      <!-- AI Agents & LLM Integration -->
-      <div class="glass-panel rounded-2xl p-6 relative overflow-hidden group">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">
-            <i data-lucide="bot" class="w-5 h-5"></i>
-          </div>
-          <div>
-            <h3 class="font-bold text-white text-sm">AI Agents & LLM Systems</h3>
-            <p class="text-[11px] text-slate-400">Conversational intake & context</p>
-          </div>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-dark-850 border border-white/5 text-xs text-slate-300">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> OpenAI GPT-4o
-          </span>
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-dark-850 border border-white/5 text-xs text-slate-300">
-            <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span> Zapier AI Chatbots
-          </span>
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-dark-850 border border-white/5 text-xs text-slate-300">
-            <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> Knowledge Bases & Directives
-          </span>
-        </div>
-      </div>
-
-      <!-- Operations & CRM Ecosystem -->
-      <div class="glass-panel rounded-2xl p-6 relative overflow-hidden group">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
-            <i data-lucide="database" class="w-5 h-5"></i>
-          </div>
-          <div>
-            <h3 class="font-bold text-white text-sm">Operations & Databases</h3>
-            <p class="text-[11px] text-slate-400">CRM Pipelines & Executive Kanban</p>
-          </div>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-dark-850 border border-white/5 text-xs text-slate-300">
-            <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> Trello Kanban
-          </span>
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-dark-850 border border-white/5 text-xs text-slate-300">
-            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Google Workspace
-          </span>
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-dark-850 border border-white/5 text-xs text-slate-300">
-            <span class="w-1.5 h-1.5 rounded-full bg-yellow-400"></span> Airtable
-          </span>
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-dark-850 border border-white/5 text-xs text-slate-300">
-            <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span> Slack Automated Alerts
-          </span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="calculator" class="py-20 px-6 max-w-5xl mx-auto">
-    <div class="glass-panel rounded-3xl p-8 sm:p-12 relative overflow-hidden border border-indigo-500/20">
-      
-      <!-- Subtle top decorative gradient line -->
-      <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-indigo-500 to-transparent"></div>
-
-      <div class="max-w-2xl mb-10">
-        <span class="text-xs font-mono font-semibold uppercase text-indigo-400 tracking-wider">Client Impact Simulator</span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Interactive Systems ROI Calculator</h2>
-        <p class="text-slate-400 text-xs sm:text-sm mt-2">
-          Estimate the weekly hours and monetary payroll lost to manual intake, data entry, email outreach, and task delegation.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-        <!-- Input Controls (Sliders) -->
-        <div class="lg:col-span-7 space-y-6">
-          
-          <!-- Team Size Slider -->
-          <div>
-            <div class="flex justify-between items-center text-xs font-semibold mb-2">
-              <span class="text-slate-300">Team Size / Founders Handling Admin</span>
-              <span id="team-val" class="font-mono text-indigo-400 bg-indigo-950/60 border border-indigo-800/40 px-2 py-0.5 rounded">3 people</span>
-            </div>
-            <input type="range" id="team-input" min="1" max="25" value="3" class="w-full" oninput="calculateROI()">
-          </div>
-
-          <!-- Hours per Day on Repetitive Work -->
-          <div>
-            <div class="flex justify-between items-center text-xs font-semibold mb-2">
-              <span class="text-slate-300">Manual Admin Hours per Person/Day</span>
-              <span id="hours-val" class="font-mono text-indigo-400 bg-indigo-950/60 border border-indigo-800/40 px-2 py-0.5 rounded">2.5 hrs/day</span>
-            </div>
-            <input type="range" id="hours-input" min="0.5" max="6" step="0.5" value="2.5" class="w-full" oninput="calculateROI()">
-          </div>
-
-          <!-- Effective Hourly Rate -->
-          <div>
-            <div class="flex justify-between items-center text-xs font-semibold mb-2">
-              <span class="text-slate-300">Average Hourly Value / Staff Cost ($USD)</span>
-              <span id="rate-val" class="font-mono text-indigo-400 bg-indigo-950/60 border border-indigo-800/40 px-2 py-0.5 rounded">$45/hr</span>
-            </div>
-            <input type="range" id="rate-input" min="15" max="150" step="5" value="45" class="w-full" oninput="calculateROI()">
+            <h4 class="text-sm font-bold text-white">Logic & Automation</h4>
+            <p class="text-[11px] text-slate-400">Multi-step workflows</p>
           </div>
         </div>
 
-        <!-- Calculated Metrics Card -->
-        <div class="lg:col-span-5 bg-dark-950/80 rounded-2xl p-6 border border-white/10 text-center flex flex-col justify-between">
-          <div class="text-xs font-mono text-slate-400 uppercase tracking-widest mb-1">Estimated Efficiency Gained</div>
-          
-          <div class="my-4">
-            <div id="monthly-savings" class="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300 font-mono">
-              $6,075
-            </div>
-            <div class="text-xs text-slate-400 mt-1">Projected Monthly Savings</div>
-          </div>
-
-          <div class="pt-4 border-t border-white/10 grid grid-cols-2 gap-3 text-left">
-            <div>
-              <div id="weekly-hours" class="text-lg font-bold font-mono text-indigo-300">37.5 hrs</div>
-              <div class="text-[11px] text-slate-400">Weekly Hours Recovered</div>
+        <div class="space-y-2.5">
+          <!-- Zapier -->
+          <div class="tech-card rounded-xl p-2.5 flex items-center gap-3">
+            <div class="w-7 h-7 rounded-lg bg-[#FF4F00]/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-[#FF4F00]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm1.2 16.8h-2.4v-3.6H7.2v-2.4h3.6V7.2h2.4v3.6h3.6v2.4h-3.6v3.6z"/></svg>
             </div>
             <div>
-              <div id="annual-savings" class="text-lg font-bold font-mono text-indigo-300">$72,900</div>
-              <div class="text-[11px] text-slate-400">Annual Waste Avoided</div>
+              <p class="text-xs font-semibold text-white">Zapier</p>
+              <p class="text-[10px] text-slate-400">Webhooks, Paths, Filters</p>
             </div>
           </div>
 
-          <a href="mailto:johnleanardguiriba13@gmail.com?subject=Custom%20Automation%20Systems%20Consultation" class="mt-6 w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition shadow-lg shadow-indigo-600/20 flex items-center justify-center gap-2">
-            <span>Automate These Hours</span>
-            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
-          </a>
+          <!-- Make -->
+          <div class="tech-card rounded-xl p-2.5 flex items-center gap-3">
+            <div class="w-7 h-7 rounded-lg bg-[#6F00FF]/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-[#A855F7]" viewBox="0 0 24 24" fill="currentColor"><path d="M11.996 0C5.371 0 0 5.37 0 11.994s5.371 12 11.996 12 12-5.374 12-12S18.623 0 11.996 0zm0 18.775a6.781 6.781 0 1 1 0-13.562 6.781 6.781 0 0 1 0 13.562z"/></svg>
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-white">Make.com</p>
+              <p class="text-[10px] text-slate-400">Complex Data Routers & Iterators</p>
+            </div>
+          </div>
+
+          <!-- n8n -->
+          <div class="tech-card rounded-xl p-2.5 flex items-center gap-3">
+            <div class="w-7 h-7 rounded-lg bg-[#EA4B71]/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-[#EA4B71]" viewBox="0 0 24 24" fill="currentColor"><path d="M13.684 14.567l-2.07 3.585a1.2 1.2 0 0 1-1.039.6h-4.14a1.2 1.2 0 0 1-1.04-.6L3.325 14.567a1.2 1.2 0 0 1 0-1.2l2.07-3.585a1.2 1.2 0 0 1 1.04-.6h4.14a1.2 1.2 0 0 1 1.039.6l2.07 3.585a1.2 1.2 0 0 1 0 1.2z"/></svg>
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-white">n8n</p>
+              <p class="text-[10px] text-slate-400">Self-Hosted & Node Orchestration</p>
+            </div>
+          </div>
+
+          <!-- Webhooks & REST APIs -->
+          <div class="tech-card rounded-xl p-2.5 flex items-center gap-3">
+            <div class="w-7 h-7 rounded-lg bg-cyan-500/10 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="webhook" class="w-4 h-4 text-cyan-400"></i>
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-white">Custom Webhooks</p>
+              <p class="text-[10px] text-slate-400">REST APIs, JSON Payloads</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Group 2: AI Models & Conversational Intelligence -->
+      <div class="glass-panel rounded-2xl p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-8 h-8 rounded-lg bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400">
+            <i data-lucide="bot" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-white">AI Models & LLMs</h4>
+            <p class="text-[11px] text-slate-400">Reasoning & Agents</p>
+          </div>
+        </div>
+
+        <div class="space-y-2.5">
+          <!-- OpenAI GPT-4o -->
+          <div class="tech-card rounded-xl p-2.5 flex items-center gap-3">
+            <div class="w-7 h-7 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="currentColor"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1683a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4947z"/></svg>
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-white">OpenAI (GPT-4o)</p>
+              <p class="text-[10px] text-slate-400">Structured Data & Assistants</p>
+            </div>
+          </div>
+
+          <!-- Anthropic Claude -->
+          <div class="tech-card rounded-xl p-2.5 flex items-center gap-3">
+            <div class="w-7 h-7 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="sparkles" class="w-4 h-4 text-amber-400"></i>
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-white">Anthropic Claude</p>
+              <p class="text-[10px] text-slate-400">Deep Context & Synthesis</p>
+            </div>
+          </div>
+
+          <!-- Zapier Chatbots -->
+          <div class="tech-card rounded-xl p-2.5 flex items-center gap-3">
+            <div class="w-7 h-7 rounded-lg bg-indigo-500/10 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="messages-square" class="w-4 h-4 text-indigo-400"></i>
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-white">Zapier AI Chatbots</p>
+              <p class="text-[10px] text-slate-400">24/7 Lead Qualifiers</p>
+            </div>
+          </div>
+
+          <!-- Voice AI -->
+          <div class="tech-card rounded-xl p-2.5 flex items-center gap-3">
+            <div class="w-7 h-7 rounded-lg bg-pink-500/10 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="mic" class="w-4 h-4 text-pink-400"></i>
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-white">Voice AI (Vapi/Retell)</p>
+              <p class="text-[10px] text-slate-400">Conversational Call Agents</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Group 3: CRM Pipelines & Databases -->
+      <div class="glass-panel rounded-2xl p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400">
+            <i data-lucide="database" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-white">CRMs & Relational Data</h4>
+            <p class="text-[11px] text-slate-400">Lead funnels & storage</p>
+          </div>
+        </div>
+
+        <div class="space-y-2.5">
+          <!-- GoHighLevel -->
+          <div class="tech-card rounded-xl p-2.5 flex items-center gap-3">
+            <div class="w-7 h-7 rounded-lg bg-sky-500/10 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="trending-up" class="w-4 h-4 text-sky-400"></i>
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-white">GoHighLevel (GHL)</p>
+              <p class="text-[10px] text-slate-400">Agency CRM & Pipelines</p>
+            </div>
+          </div>
+
+          <!-- Airtable -->
+          <div class="tech-card rounded-xl p-2.5 flex items-center gap-3">
+            <div class="w-7 h-7 rounded-lg bg-yellow-500/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-yellow-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12.512.015L.98 4.384a.5.5 0 0 0-.327.469v6.52c0 .2.12.38.307.457l11.233 4.606a.501.501 0 0 0 .38 0l11.234-4.606a.5.5 0 0 0 .307-.457v-6.52a.5.5 0 0 0-.327-.469L12.512.015z"/></svg>
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-white">Airtable</p>
+              <p class="text-[10px] text-slate-400">Relational Database Schemas</p>
+            </div>
+          </div>
+
+          <!-- HubSpot -->
+          <div class="tech-card rounded-xl p-2.5 flex items-center gap-3">
+            <div class="w-7 h-7 rounded-lg bg-[#FF7A59]/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-[#FF7A59]" viewBox="0 0 24 24" fill="currentColor"><path d="M18.8 6.5V3.8a2.3 2.3 0 1 0-1.8 0v2.7a5.5 5.5 0 0 0-2.8 1.9l-6.1-4.8a2.2 2.2 0 1 0-1.4 1.1l5.9 4.6a5.5 5.5 0 1 0 6.2-.8zm-4.7 9a3.2 3.2 0 1 1 3.2-3.2 3.2 3.2 0 0 1-3.2 3.2z"/></svg>
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-white">HubSpot CRM</p>
+              <p class="text-[10px] text-slate-400">Enterprise Deal Stages</p>
+            </div>
+          </div>
+
+          <!-- Google Sheets -->
+          <div class="tech-card rounded-xl p-2.5 flex items-center gap-3">
+            <div class="w-7 h-7 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="table" class="w-4 h-4 text-emerald-400"></i>
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-white">Google Sheets</p>
+              <p class="text-[10px] text-slate-400">Lightweight Real-time Data Sync</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Group 4: Operations & Custom Code -->
+      <div class="glass-panel rounded-2xl p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+            <i data-lucide="sliders" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-white">Operations & Code</h4>
+            <p class="text-[11px] text-slate-400">Execution & delegation</p>
+          </div>
+        </div>
+
+        <div class="space-y-2.5">
+          <!-- Trello -->
+          <div class="tech-card rounded-xl p-2.5 flex items-center gap-3">
+            <div class="w-7 h-7 rounded-lg bg-[#0079BF]/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-[#0079BF]" viewBox="0 0 24 24" fill="currentColor"><path d="M19.5 0H4.5A4.5 4.5 0 0 0 0 4.5v15A4.5 4.5 0 0 0 4.5 24h15a4.5 4.5 0 0 0 4.5-4.5v-15A4.5 4.5 0 0 0 19.5 0zm-8.8 17.2a1.2 1.2 0 0 1-1.2 1.2H5.1a1.2 1.2 0 0 1-1.2-1.2V5.6a1.2 1.2 0 0 1 1.2-1.2h4.4a1.2 1.2 0 0 1 1.2 1.2v11.6zm8.2-5.4a1.2 1.2 0 0 1-1.2 1.2h-4.4a1.2 1.2 0 0 1-1.2-1.2V5.6a1.2 1.2 0 0 1 1.2-1.2h4.4a1.2 1.2 0 0 1 1.2 1.2v6.2z"/></svg>
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-white">Trello Operations</p>
+              <p class="text-[10px] text-slate-400">Dynamic Board Task Queues</p>
+            </div>
+          </div>
+
+          <!-- Calendly -->
+          <div class="tech-card rounded-xl p-2.5 flex items-center gap-3">
+            <div class="w-7 h-7 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="calendar" class="w-4 h-4 text-blue-400"></i>
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-white">Calendly / Cal.com</p>
+              <p class="text-[10px] text-slate-400">Two-way Calendar Syncing</p>
+            </div>
+          </div>
+
+          <!-- Slack / Notifications -->
+          <div class="tech-card rounded-xl p-2.5 flex items-center gap-3">
+            <div class="w-7 h-7 rounded-lg bg-[#4A154B]/20 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="bell" class="w-4 h-4 text-[#E01E5A]"></i>
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-white">Slack Notifications</p>
+              <p class="text-[10px] text-slate-400">Team Alerts & Ping Bots</p>
+            </div>
+          </div>
+
+          <!-- JavaScript / Code Snippets -->
+          <div class="tech-card rounded-xl p-2.5 flex items-center gap-3">
+            <div class="w-7 h-7 rounded-lg bg-yellow-500/10 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="code" class="w-4 h-4 text-yellow-400"></i>
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-white">Custom JavaScript</p>
+              <p class="text-[10px] text-slate-400">Data Transformations & Parsing</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive ROI & Hours Saved Calculator -->
+  <section id="calculator" class="max-w-4xl mx-auto px-6 py-12" data-aos="zoom-in" data-aos-duration="800">
+    <div class="glass-panel rounded-3xl p-8 sm:p-10 border border-indigo-500/20 bg-gradient-to-b from-indigo-950/30 to-dark-850">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
+        <div>
+          <span class="text-xs font-mono uppercase text-indigo-400 tracking-wider">Interactive Estimator</span>
+          <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight">Agency ROI Calculator</h3>
+          <p class="text-xs text-slate-400 mt-1">Estimate time and money saved by replacing manual ops with automations.</p>
+        </div>
+        <div class="bg-indigo-900/50 border border-indigo-700/50 rounded-xl px-4 py-2 text-right">
+          <span class="text-[11px] text-slate-400 block font-mono">Estimated Annual Savings</span>
+          <span id="savingsDisplay" class="text-2xl font-extrabold text-emerald-400 font-mono">$18,720</span>
+        </div>
+      </div>
+
+      <!-- Sliders -->
+      <div class="space-y-6">
+        <div>
+          <div class="flex justify-between text-xs font-medium text-slate-300 mb-2">
+            <span>Manual Admin Hours Per Week (Lead logging, emails, tasks):</span>
+            <span id="hoursVal" class="text-indigo-400 font-mono font-bold">12 hrs/week</span>
+          </div>
+          <input type="range" id="hoursInput" min="2" max="40" value="12" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500" oninput="calculateSavings()">
+        </div>
+
+        <div>
+          <div class="flex justify-between text-xs font-medium text-slate-300 mb-2">
+            <span>Average Hourly Value / Operational Cost ($/hr):</span>
+            <span id="rateVal" class="text-indigo-400 font-mono font-bold">$30/hr</span>
+          </div>
+          <input type="range" id="rateInput" min="15" max="150" step="5" value="30" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500" oninput="calculateSavings()">
         </div>
       </div>
     </div>
   </section>
 
-  <section id="projects" class="py-20 px-6 max-w-7xl mx-auto flex-grow">
-    
-    <!-- Section Header & Category Filters -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 border-b border-white/[0.08] pb-6">
+  <!-- Featured Production Case Studies (6 Systems) -->
+  <main id="case-studies" class="max-w-6xl mx-auto px-6 py-16 relative z-20">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 border-b border-slate-800/80 pb-6">
       <div>
-        <span class="text-xs font-mono font-semibold uppercase text-indigo-400 tracking-wider">Production Architecture</span>
-        <h2 class="text-3xl font-extrabold text-white tracking-tight mt-1">Featured Automation Systems</h2>
-        <p class="text-xs text-slate-400 mt-1">Click on any case study to inspect the step-by-step logic, triggers, and payload flow.</p>
+        <h2 class="text-xs font-bold uppercase tracking-widest text-indigo-400 mb-1 font-mono">Proven Implementations</h2>
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Featured Case Studies</h3>
       </div>
-
-      <!-- Filter Buttons -->
-      <div class="flex flex-wrap gap-2" id="filter-container">
-        <button onclick="filterProjects('all')" class="filter-btn active px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white transition">All Systems</button>
-        <button onclick="filterProjects('ai')" class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-dark-850 hover:bg-dark-800 text-slate-300 transition">AI Agents</button>
-        <button onclick="filterProjects('crm')" class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-dark-850 hover:bg-dark-800 text-slate-300 transition">CRM & Data</button>
-        <button onclick="filterProjects('ops')" class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-dark-850 hover:bg-dark-800 text-slate-300 transition">Operations</button>
-      </div>
+      <p class="text-xs text-slate-400 mt-2 sm:mt-0 font-mono">Production-tested logic flows</p>
     </div>
 
-    <!-- Dynamic Projects Grid (Rendered via JS) -->
-    <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Cards injected by renderProjects() -->
-    </div>
-  </section>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-  <div id="system-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
-    <div class="glass-panel max-w-2xl w-full rounded-2xl overflow-hidden border border-indigo-500/30 shadow-2xl animate-in fade-in zoom-in-95 duration-200">
-      
-      <!-- Modal Header -->
-      <div class="px-6 py-4 border-b border-white/10 flex items-center justify-between bg-dark-900/60">
-        <div class="flex items-center gap-2">
-          <span id="modal-tag" class="text-[10px] font-mono px-2.5 py-0.5 rounded-full uppercase bg-indigo-950 text-indigo-300 border border-indigo-800">Trigger/Action</span>
-          <span id="modal-id" class="text-xs font-mono text-slate-500">SYS-01</span>
-        </div>
-        <button onclick="closeModal()" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-white/5 transition">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-      </div>
-
-      <!-- Modal Body -->
-      <div class="p-6 space-y-6 max-h-[75vh] overflow-y-auto">
+      <!-- Case Study 1 -->
+      <div class="glass-panel rounded-2xl p-6 flex flex-col justify-between group" data-aos="fade-up" data-aos-delay="100">
         <div>
-          <h3 id="modal-title" class="text-xl font-bold text-white">System Architecture</h3>
-          <p id="modal-description" class="text-xs text-slate-300 mt-2 leading-relaxed"></p>
+          <div class="flex justify-between items-center mb-4">
+            <span class="text-[11px] font-semibold text-emerald-400 bg-emerald-950/50 border border-emerald-800/40 px-2.5 py-0.5 rounded-full">Email Automation</span>
+            <span class="text-xs text-slate-500 font-mono">01</span>
+          </div>
+          <h4 class="text-base font-bold text-white group-hover:text-indigo-300 transition">Inbound Gmail Automated Responder</h4>
+          <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+            Instantly responds to client inquiries with tailored service packages and calendar links, guaranteeing zero-minute response lag.
+          </p>
         </div>
+        <div class="mt-6 pt-4 border-t border-slate-800/80 text-[11px] text-slate-400 flex items-center justify-between">
+          <span class="font-mono text-slate-400">Zapier • Gmail</span>
+          <span class="text-emerald-400 font-semibold font-mono">0m First Response</span>
+        </div>
+      </div>
 
-        <!-- Workflow Pipeline Step Visualization -->
+      <!-- Case Study 2 -->
+      <div class="glass-panel rounded-2xl p-6 flex flex-col justify-between group" data-aos="fade-up" data-aos-delay="150">
         <div>
-          <div class="text-xs font-mono uppercase text-indigo-400 font-semibold mb-3">Workflow Execution Breakdown</div>
-          <div id="modal-steps" class="space-y-3 font-mono text-xs">
-            <!-- Dynamically injected steps -->
+          <div class="flex justify-between items-center mb-4">
+            <span class="text-[11px] font-semibold text-blue-400 bg-blue-950/50 border border-blue-800/40 px-2.5 py-0.5 rounded-full">Data Management</span>
+            <span class="text-xs text-slate-500 font-mono">02</span>
           </div>
+          <h4 class="text-base font-bold text-white group-hover:text-indigo-300 transition">Real-Time Lead Tracking CRM</h4>
+          <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+            Converts raw intake form submissions into a clean, normalized Google Sheets CRM pipeline with automated timestamps and lead scoring.
+          </p>
         </div>
-
-        <!-- Technical Impact & KPI -->
-        <div class="grid grid-cols-2 gap-3 pt-4 border-t border-white/10 text-xs">
-          <div class="bg-dark-950/70 p-3 rounded-xl border border-white/5">
-            <span class="text-slate-500 block text-[10px]">VERIFIED RESULT</span>
-            <span id="modal-metric" class="font-bold text-emerald-400">Zero Error Rate</span>
-          </div>
-          <div class="bg-dark-950/70 p-3 rounded-xl border border-white/5">
-            <span class="text-slate-500 block text-[10px]">PRIMARY STACK</span>
-            <span id="modal-stack" class="font-bold text-indigo-300">Zapier / Google</span>
-          </div>
+        <div class="mt-6 pt-4 border-t border-slate-800/80 text-[11px] text-slate-400 flex items-center justify-between">
+          <span class="font-mono text-slate-400">Zapier • Sheets • Forms</span>
+          <span class="text-blue-400 font-semibold font-mono">Zero Entry Errors</span>
         </div>
       </div>
 
-      <!-- Modal Footer -->
-      <div class="px-6 py-4 bg-dark-900/90 border-t border-white/10 flex justify-between items-center">
-        <span class="text-[11px] text-slate-400">Available for custom implementation</span>
-        <a href="mailto:johnleanardguiriba13@gmail.com?subject=Inquiry%20regarding%20Automated%20System" class="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition">
-          Request System Build
-        </a>
+      <!-- Case Study 3 -->
+      <div class="glass-panel rounded-2xl p-6 flex flex-col justify-between group" data-aos="fade-up" data-aos-delay="200">
+        <div>
+          <div class="flex justify-between items-center mb-4">
+            <span class="text-[11px] font-semibold text-purple-400 bg-purple-950/50 border border-purple-800/40 px-2.5 py-0.5 rounded-full">Executive Workflow</span>
+            <span class="text-xs text-slate-500 font-mono">03</span>
+          </div>
+          <h4 class="text-base font-bold text-white group-hover:text-indigo-300 transition">Discovery Call Auto-Booking</h4>
+          <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+            Eliminates email back-and-forth by creating synchronized Google Calendar events with pre-loaded agenda details straight from form inputs.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-800/80 text-[11px] text-slate-400 flex items-center justify-between">
+          <span class="font-mono text-slate-400">Forms • Google Calendar</span>
+          <span class="text-purple-400 font-semibold font-mono">100% Synced</span>
+        </div>
       </div>
+
+      <!-- Case Study 4 -->
+      <div class="glass-panel rounded-2xl p-6 flex flex-col justify-between group" data-aos="fade-up" data-aos-delay="250">
+        <div>
+          <div class="flex justify-between items-center mb-4">
+            <span class="text-[11px] font-semibold text-indigo-400 bg-indigo-950/50 border border-indigo-800/40 px-2.5 py-0.5 rounded-full">Conversational AI</span>
+            <span class="text-xs text-slate-500 font-mono">04</span>
+          </div>
+          <h4 class="text-base font-bold text-white group-hover:text-indigo-300 transition">24/7 Agency Inbound Support Bot</h4>
+          <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+            Trained custom AI agent to answer client questions about pricing, project deliverables, and turnaround times, driving prospects to calls.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-800/80 text-[11px] text-slate-400 flex items-center justify-between">
+          <span class="font-mono text-slate-400">Zapier AI • OpenAI</span>
+          <span class="text-indigo-400 font-semibold font-mono">24/7 Uptime</span>
+        </div>
+      </div>
+
+      <!-- Case Study 5 -->
+      <div class="glass-panel rounded-2xl p-6 flex flex-col justify-between group" data-aos="fade-up" data-aos-delay="300">
+        <div>
+          <div class="flex justify-between items-center mb-4">
+            <span class="text-[11px] font-semibold text-amber-400 bg-amber-950/50 border border-amber-800/40 px-2.5 py-0.5 rounded-full">Conversational AI</span>
+            <span class="text-xs text-slate-500 font-mono">05</span>
+          </div>
+          <h4 class="text-base font-bold text-white group-hover:text-indigo-300 transition">Lead Qualification & Scoping Bot</h4>
+          <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+            Conducts interactive intake interviews to scope project requirements, budget tiers, and deliverable timelines before call booking.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-800/80 text-[11px] text-slate-400 flex items-center justify-between">
+          <span class="font-mono text-slate-400">Zapier AI • Custom Logic</span>
+          <span class="text-amber-400 font-semibold font-mono">Pre-Scaped Briefs</span>
+        </div>
+      </div>
+
+      <!-- Case Study 6 -->
+      <div class="glass-panel rounded-2xl p-6 flex flex-col justify-between group" data-aos="fade-up" data-aos-delay="350">
+        <div>
+          <div class="flex justify-between items-center mb-4">
+            <span class="text-[11px] font-semibold text-cyan-400 bg-cyan-950/50 border border-cyan-800/40 px-2.5 py-0.5 rounded-full">Operations Pipeline</span>
+            <span class="text-xs text-slate-500 font-mono">06</span>
+          </div>
+          <h4 class="text-base font-bold text-white group-hover:text-indigo-300 transition">Automated Task Delegation Pipeline</h4>
+          <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
+            Parses submitted client specifications into formatted Trello production tickets with assigned team checklists, tags, and deliverable notes.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-800/80 text-[11px] text-slate-400 flex items-center justify-between">
+          <span class="font-mono text-slate-400">Zapier • Trello • Forms</span>
+          <span class="text-cyan-400 font-semibold font-mono">Instant Handoff</span>
+        </div>
+      </div>
+
     </div>
-  </div>
 
-  <section class="py-20 px-6 max-w-5xl mx-auto">
-    <div class="glass-panel rounded-3xl p-10 sm:p-14 text-center relative overflow-hidden border border-indigo-500/20">
+    <!-- Final Call to Action Box -->
+    <section class="mt-20 glass-panel rounded-3xl p-10 sm:p-14 text-center relative overflow-hidden border border-indigo-600/30" data-aos="zoom-in">
       <div class="max-w-2xl mx-auto relative z-10">
-        <span class="text-xs font-mono font-semibold uppercase text-indigo-400 tracking-wider">Start Here</span>
-        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-2 tracking-tight">Ready to eliminate your agency's manual bottleneck?</h2>
-        <p class="text-slate-400 text-xs sm:text-sm mt-4 leading-relaxed">
-          Whether you need to bridge disconnected web apps, build an autonomous qualifying AI agent, or automate customer onboarding from end-to-end, let's connect.
+        <h3 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">Need custom automations built for your agency?</h3>
+        <p class="text-slate-400 text-sm sm:text-base mt-4 leading-relaxed font-normal">
+          Let’s discuss your current bottlenecks and build a hands-off system tailored to your team.
         </p>
-
-        <!-- Direct Email Card -->
-        <div class="mt-8 inline-flex flex-col sm:flex-row items-center gap-3 p-2 rounded-2xl bg-dark-950/90 border border-white/10">
-          <div class="px-4 py-2 text-xs font-mono text-indigo-300 flex items-center gap-2">
-            <i data-lucide="mail" class="w-4 h-4 text-indigo-400"></i>
+        
+        <div class="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4">
+          <a href="mailto:johnleanardguiriba13@gmail.com" class="w-full sm:w-auto bg-brand-600 hover:bg-brand-500 text-white font-semibold text-xs sm:text-sm px-8 py-3.5 rounded-xl shadow-lg shadow-indigo-600/30 transition transform hover:-translate-y-0.5 inline-flex items-center justify-center gap-2">
+            <i data-lucide="mail" class="w-4 h-4"></i>
             <span>johnleanardguiriba13@gmail.com</span>
-          </div>
-          <div class="flex items-center gap-2 w-full sm:w-auto">
-            <button onclick="copyEmail()" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-dark-850 hover:bg-dark-800 text-slate-200 text-xs font-semibold transition border border-white/5">
-              Copy Email
-            </button>
-            <a href="mailto:johnleanardguiriba13@gmail.com?subject=Automation%20Systems%20Engagement" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition shadow-lg shadow-indigo-600/25 flex items-center justify-center gap-1.5">
-              <span>Send Message</span>
-              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-            </a>
-          </div>
+          </a>
+          <button onclick="copyEmail()" class="w-full sm:w-auto glass-panel hover:bg-slate-800 text-slate-300 font-semibold text-xs sm:text-sm px-6 py-3.5 rounded-xl transition inline-flex items-center justify-center gap-2">
+            <i data-lucide="copy" class="w-4 h-4 text-indigo-400"></i>
+            <span>Copy Address</span>
+          </button>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- Footer -->
-  <footer class="border-t border-white/[0.05] bg-dark-950 py-8 px-6 text-slate-500 text-xs">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-2">
-        <span class="font-bold text-slate-300">John Leanard</span>
-        <span>— Workflow Automation & AI Systems Specialist</span>
-      </div>
-      <div>
-        <span>Pre-configured for GitHub Pages • Live Production Build</span>
-      </div>
-    </div>
+  <!-- Minimal Footer -->
+  <footer class="max-w-6xl mx-auto px-6 py-8 border-t border-slate-800/60 text-xs text-slate-500 flex flex-col sm:flex-row justify-between items-center gap-4 relative z-20">
+    <p>© 2026 John Leanard Guiriba. All rights reserved.</p>
+    <p class="font-mono">Built with Tailwind CSS • Hosted on GitHub Pages</p>
   </footer>
 
+  <!-- Scripts: AOS, Lucide, & Logic -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    // -------------------------------------------------------------
-    // 1. EXTENSIBLE TECH STACK DATA & SVG LOGOS
-    // Add or remove apps easily by adding items to this array!
-    // -------------------------------------------------------------
-    const techApps = [
-      {
-        name: "Zapier",
-        role: "Multi-Step Automation",
-        svg: `<svg viewBox="0 0 24 24" class="w-5 h-5 fill-current text-[#FF4F00]"><path d="M11.666 0v8.667H3L12.334 24v-8.667H21L11.666 0z"/></svg>`
-      },
-      {
-        name: "Make",
-        role: "Complex Visual Routers",
-        svg: `<svg viewBox="0 0 24 24" class="w-5 h-5 fill-current text-[#6D28D9]"><path d="M2.5 12a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0zm7-4.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zm5 0a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zm-2.5 5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z"/></svg>`
-      },
-      {
-        name: "n8n",
-        role: "Self-Hosted Workflows",
-        svg: `<svg viewBox="0 0 24 24" class="w-5 h-5 fill-current text-[#EA4B71]"><circle cx="4" cy="12" r="3"/><circle cx="12" cy="7" r="3"/><circle cx="12" cy="17" r="3"/><circle cx="20" cy="12" r="3"/><path d="M4 12h8M12 7l8 5M12 17l8-5" stroke="currentColor" stroke-width="2"/></svg>`
-      },
-      {
-        name: "OpenAI",
-        role: "LLMs & Intelligent Logic",
-        svg: `<svg viewBox="0 0 24 24" class="w-5 h-5 fill-current text-[#10A37F]"><path d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494z"/></svg>`
-      },
-      {
-        name: "Google Workspace",
-        role: "Sheets / Forms / Calendar",
-        svg: `<svg viewBox="0 0 24 24" class="w-5 h-5 fill-current text-[#4285F4]"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1 5h2v6h-2zm0 8h2v2h-2z"/></svg>`
-      },
-      {
-        name: "Trello",
-        role: "Kanban & Task Automation",
-        svg: `<svg viewBox="0 0 24 24" class="w-5 h-5 fill-current text-[#0079BF]"><rect width="24" height="24" rx="4"/><rect x="4" y="4" width="6" height="12" rx="1.5" fill="#fff"/><rect x="14" y="4" width="6" height="8" rx="1.5" fill="#fff"/></svg>`
-      },
-      {
-        name: "Airtable",
-        role: "Relational Operational DBs",
-        svg: `<svg viewBox="0 0 24 24" class="w-5 h-5 fill-current text-[#FCB400]"><path d="M12 2l10 5.5v9L12 22 2 16.5v-9L12 2zm-8 6.5l8 4.4 8-4.4-8-4.4-8 4.4z"/></svg>`
-      },
-      {
-        name: "Webhooks / REST",
-        role: "Custom API Connectors",
-        svg: `<svg viewBox="0 0 24 24" class="w-5 h-5 fill-current text-[#6366F1]"><path d="M14 4h6v6h-2V7.414l-8.293 8.293-1.414-1.414L16.586 6H14V4zm-4 16H4v-6h2v2.586l8.293-8.293 1.414 1.414L7.414 18H10v2z"/></svg>`
-      },
-      {
-        name: "Slack",
-        role: "Internal Alert Pipelines",
-        svg: `<svg viewBox="0 0 24 24" class="w-5 h-5 fill-current text-[#ECB22E]"><path d="M6 15a2 2 0 1 1-2-2h2v2zm1 0a2 2 0 1 1 4 0v5a2 2 0 1 1-4 0v-5zm2-8a2 2 0 1 1 2 2H9V7zm0 1a2 2 0 1 1 0 4H4a2 2 0 1 1 0-4h5zm8 2a2 2 0 1 1 2 2h-2v-2zm-1 0a2 2 0 1 1-4 0V5a2 2 0 1 1 4 0v5zm-2 8a2 2 0 1 1-2-2h2v2zm0-1a2 2 0 1 1 0-4h5a2 2 0 1 1 0 4h-5z"/></svg>`
-      }
-    ];
+    // Initialize Icons
+    lucide.createIcons();
 
-    // Populate Animated Marquee (Duplicated to allow infinite smooth scroll)
-    function initMarquee() {
-      const track = document.getElementById('marquee-track');
-      const doubled = [...techApps, ...techApps];
-      track.innerHTML = doubled.map(app => `
-        <div class="flex items-center gap-3 px-5 py-2.5 rounded-xl bg-dark-850/80 border border-white/5 backdrop-blur-sm whitespace-nowrap shadow-sm hover:border-indigo-500/40 transition">
-          ${app.svg}
-          <span class="text-xs font-bold text-white">${app.name}</span>
-          <span class="text-[10px] text-slate-400 font-mono hidden sm:inline">• ${app.role}</span>
-        </div>
-      `).join('');
-    }
-
-    // -------------------------------------------------------------
-    // 2. FEATURED CASE STUDIES & WORKFLOW ARCHITECTURE SPECIFICATIONS
-    // -------------------------------------------------------------
-    const projectsData = [
-      {
-        id: "SYS-01",
-        category: "ops",
-        badge: "Email Automation",
-        badgeColor: "emerald",
-        title: "Inbound Gmail Automated Responder",
-        stack: "Zapier, Google Forms, Gmail",
-        metric: "0m First-Response Time",
-        shortDesc: "Eliminates initial response friction by parsing inbound leads from intake forms and sending personalized package guides immediately.",
-        steps: [
-          { step: "Trigger", desc: "Catch Google Form response submission event" },
-          { step: "Logic & Filter", desc: "Format lead name, sanitize business email string" },
-          { step: "Action", desc: "Dispatch tailored Gmail notification with agency deck" }
-        ],
-        details: "Built to eliminate lead drop-off during off-hours. Immediately triggers upon new intake submission, confirms client receipt, and pre-qualifies their budget fit with next steps before founder review."
-      },
-      {
-        id: "SYS-02",
-        category: "crm",
-        badge: "Data Management",
-        badgeColor: "blue",
-        title: "Real-Time Lead Tracking CRM Pipeline",
-        stack: "Google Forms, Sheets, Zapier",
-        metric: "100% Ingestion Accuracy",
-        shortDesc: "Captures and normalizes incoming client queries into a Google Sheets CRM with automatic timestamps and categorized stages.",
-        steps: [
-          { step: "Trigger", desc: "New Lead Intake submission event" },
-          { step: "Data Transform", desc: "Format UTC Timestamp to local client time zone" },
-          { step: "Action", desc: "Append row to Google Sheets CRM with status 'New Inbound'" }
-        ],
-        details: "Removes 100% of human copy-paste errors. Acts as a lightweight, dependable CRM providing real-time team visibility on all opportunities entering the pipeline."
-      },
-      {
-        id: "SYS-03",
-        category: "ops",
-        badge: "Executive Workflow",
-        badgeColor: "purple",
-        title: "Automated Discovery Call Scheduling",
-        stack: "Zapier, Calendar, Forms",
-        metric: "Zero Schedule Overlaps",
-        shortDesc: "Syncs chosen meeting dates and client consultation notes directly into Google Calendar, setting dynamic durations and attendee invites.",
-        steps: [
-          { step: "Trigger", desc: "Appointment form submitted with chosen slot" },
-          { step: "Logic", desc: "Calculate meeting end time (+45m duration)" },
-          { step: "Action", desc: "Create Google Calendar event with pre-loaded agenda" }
-        ],
-        details: "Eradicates the friction of back-and-forth emails. Synchronizes agenda notes directly into the calendar card, allowing the team to show up prepared for discovery calls."
-      },
-      {
-        id: "SYS-04",
-        category: "ai",
-        badge: "Conversational AI",
-        badgeColor: "indigo",
-        title: "24/7 Agency Inbound Support Agent",
-        stack: "Zapier AI Chatbots, OpenAI GPT-4o",
-        metric: "24/7 Real-Time Availability",
-        shortDesc: "Custom-prompted conversational agent resolving client questions regarding pricing, scope limits, and booking links autonomously.",
-        steps: [
-          { step: "Trigger", desc: "User opens website chat widget" },
-          { step: "AI Core", desc: "OpenAI GPT-4o parses knowledge base with strict directives" },
-          { step: "Output", desc: "Streams structured answer & presents discovery booking CTA" }
-        ],
-        details: "Trained on agency directives, pricing bounds, and revision limitations. Ensures prospects receive immediate answers to repetitive questions without pulling founder focus."
-      },
-      {
-        id: "SYS-05",
-        category: "ai",
-        badge: "Conversational AI",
-        badgeColor: "amber",
-        title: "Project Intake & Qualification Bot",
-        stack: "Zapier AI Chatbots, OpenAI LLMs",
-        metric: "Pre-Scored Lead Briefs",
-        shortDesc: "Interviews prospective clients through dynamic dialogue to verify deliverables, budgets, and timelines before human review.",
-        steps: [
-          { step: "Trigger", desc: "Prospective client initiates scoping session" },
-          { step: "Dialogue Flow", desc: "Extracts video volume, turnaround urgency, and budget" },
-          { step: "Handoff", desc: "Logs verified creative brief to pipeline database" }
-        ],
-        details: "Replaces traditional multi-page forms with an engaging conversational agent that structures client needs into a clean production specification sheet."
-      },
-      {
-        id: "SYS-06",
-        category: "ops",
-        badge: "Operations Pipeline",
-        badgeColor: "cyan",
-        title: "Automated Task Delegation Pipeline",
-        stack: "Zapier, Google Forms, Trello",
-        metric: "Instant Production Handoff",
-        shortDesc: "Converts client design briefs directly into structured Trello production cards with auto-assigned checklists under 'Pending / In Queue'.",
-        steps: [
-          { step: "Trigger", desc: "Client submits complete project specifications" },
-          { step: "Card Creation", desc: "Generate Trello Card under 'Pending / In Queue'" },
-          { step: "Checklist Injection", desc: "Inject production checklist items & metadata notes" }
-        ],
-        details: "Bridges client intake with internal project management. Eliminates manual onboarding delays and ensures editors receive complete briefs with zero missed details."
-      }
-    ];
-
-    // Render Projects Grid
-    function renderProjects(filter = 'all') {
-      const container = document.getElementById('projects-grid');
-      const filtered = filter === 'all' 
-        ? projectsData 
-        : projectsData.filter(p => p.category === filter);
-
-      container.innerHTML = filtered.map((project, idx) => `
-        <div onclick="openModal('${project.id}')" class="glass-panel rounded-2xl p-6 flex flex-col justify-between cursor-pointer group hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-300">
-          <div>
-            <div class="flex justify-between items-center mb-3">
-              <span class="text-[10px] font-mono font-semibold px-2.5 py-0.5 rounded-full uppercase bg-${project.badgeColor}-950/70 text-${project.badgeColor}-400 border border-${project.badgeColor}-800/40">
-                ${project.badge}
-              </span>
-              <span class="text-xs font-mono text-slate-500 group-hover:text-indigo-400 transition font-medium">${project.id}</span>
-            </div>
-            <h3 class="text-base font-bold text-white group-hover:text-indigo-300 transition leading-snug">
-              ${project.title}
-            </h3>
-            <p class="text-xs text-slate-400 mt-2.5 leading-relaxed">
-              ${project.shortDesc}
-            </p>
-          </div>
-
-          <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs">
-            <span class="text-slate-400 font-mono text-[11px] truncate max-w-[170px]">${project.stack}</span>
-            <span class="inline-flex items-center gap-1 text-indigo-400 font-semibold group-hover:translate-x-1 transition text-[11px]">
-              Inspect <i data-lucide="arrow-right" class="w-3 h-3"></i>
-            </span>
-          </div>
-        </div>
-      `).join('');
-
-      // Refresh lucide icons for newly injected cards
-      lucide.createIcons();
-    }
-
-    // Filter Trigger
-    function filterProjects(category) {
-      document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.remove('bg-indigo-600', 'text-white');
-        btn.classList.add('bg-dark-850', 'text-slate-300');
-      });
-      event.currentTarget.classList.add('bg-indigo-600', 'text-white');
-      event.currentTarget.classList.remove('bg-dark-850', 'text-slate-300');
-      renderProjects(category);
-    }
-
-    // -------------------------------------------------------------
-    // 3. MODAL LOGIC & ARCHITECTURE INSPECTION
-    // -------------------------------------------------------------
-    function openModal(projectId) {
-      const p = projectsData.find(item => item.id === projectId);
-      if (!p) return;
-
-      document.getElementById('modal-id').innerText = p.id;
-      document.getElementById('modal-tag').innerText = p.badge;
-      document.getElementById('modal-title').innerText = p.title;
-      document.getElementById('modal-description').innerText = p.details;
-      document.getElementById('modal-metric').innerText = p.metric;
-      document.getElementById('modal-stack').innerText = p.stack;
-
-      const stepsContainer = document.getElementById('modal-steps');
-      stepsContainer.innerHTML = p.steps.map((st, i) => `
-        <div class="flex items-start gap-3 p-3 rounded-xl bg-dark-950/80 border border-white/5">
-          <span class="w-5 h-5 rounded-full bg-indigo-950 border border-indigo-700/60 text-indigo-400 flex items-center justify-center text-[10px] font-bold flex-shrink-0">
-            ${i + 1}
-          </span>
-          <div>
-            <div class="font-bold text-slate-200 text-[11px]">${st.step}</div>
-            <div class="text-[11px] text-slate-400 mt-0.5">${st.desc}</div>
-          </div>
-        </div>
-      `).join('');
-
-      const modal = document.getElementById('system-modal');
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-    }
-
-    function closeModal() {
-      const modal = document.getElementById('system-modal');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-    }
-
-    // Close on backdrop click
-    document.getElementById('system-modal').addEventListener('click', function(e) {
-      if (e.target === this) closeModal();
+    // Initialize Scroll Animations
+    AOS.init({
+      once: true,
+      duration: 800,
+      offset: 40,
+      easing: 'ease-out-cubic'
     });
 
-    // -------------------------------------------------------------
-    // 4. INTERACTIVE ROI CALCULATOR FORMULA
-    // -------------------------------------------------------------
-    function calculateROI() {
-      const team = parseFloat(document.getElementById('team-input').value);
-      const hours = parseFloat(document.getElementById('hours-input').value);
-      const rate = parseFloat(document.getElementById('rate-input').value);
+    // ROI Calculator Function
+    function calculateSavings() {
+      const hours = parseInt(document.getElementById('hoursInput').value);
+      const rate = parseInt(document.getElementById('rateInput').value);
 
-      document.getElementById('team-val').innerText = `${team} ${team === 1 ? 'person' : 'people'}`;
-      document.getElementById('hours-val').innerText = `${hours} hrs/day`;
-      document.getElementById('rate-val').innerText = `$${rate}/hr`;
+      document.getElementById('hoursVal').innerText = hours + " hrs/week";
+      document.getElementById('rateVal').innerText = "$" + rate + "/hr";
 
-      // 5 working days a week, 4.33 weeks in a month
-      const weeklyHoursSaved = team * hours * 5;
-      const monthlyHoursSaved = weeklyHoursSaved * 4.33;
-      const monthlySavingsDollars = monthlyHoursSaved * rate;
-      const annualSavingsDollars = monthlySavingsDollars * 12;
-
-      document.getElementById('weekly-hours').innerText = `${weeklyHoursSaved.toFixed(1)} hrs`;
-      document.getElementById('monthly-savings').innerText = `$${Math.round(monthlySavingsDollars).toLocaleString()}`;
-      document.getElementById('annual-savings').innerText = `$${Math.round(annualSavingsDollars).toLocaleString()}`;
+      // 52 weeks per year
+      const totalAnnual = hours * rate * 52;
+      document.getElementById('savingsDisplay').innerText = "$" + totalAnnual.toLocaleString();
     }
 
-    // -------------------------------------------------------------
-    // 5. CLIPBOARD & TOAST UTILITY (No alert() used)
-    // -------------------------------------------------------------
+    // 1-Click Copy Email Function
     function copyEmail() {
       const email = 'johnleanardguiriba13@gmail.com';
-      
-      // Fallback-safe clipboard copy
-      const tempInput = document.createElement('input');
-      tempInput.value = email;
-      document.body.appendChild(tempInput);
-      tempInput.select();
-      document.execCommand('copy');
-      document.body.removeChild(tempInput);
-
-      showToast('Email address copied to clipboard!');
+      navigator.clipboard.writeText(email).then(() => {
+        const toast = document.getElementById('toast');
+        toast.classList.remove('translate-y-20', 'opacity-0');
+        setTimeout(() => {
+          toast.classList.add('translate-y-20', 'opacity-0');
+        }, 2800);
+      });
     }
-
-    function showToast(message) {
-      const toast = document.getElementById('toast');
-      const toastMsg = document.getElementById('toast-message');
-      toastMsg.innerText = message;
-
-      toast.classList.remove('translate-y-20', 'opacity-0');
-      toast.classList.add('translate-y-0', 'opacity-100');
-
-      setTimeout(() => {
-        toast.classList.remove('translate-y-0', 'opacity-100');
-        toast.classList.add('translate-y-20', 'opacity-0');
-      }, 3000);
-    }
-
-    // Initialize scripts on load
-    window.addEventListener('DOMContentLoaded', () => {
-      initMarquee();
-      renderProjects('all');
-      calculateROI();
-      lucide.createIcons();
-    });
   </script>
 </body>
 </html>
