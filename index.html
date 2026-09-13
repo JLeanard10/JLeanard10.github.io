@@ -2,23 +2,2482 @@
 
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 ```
-<title>John Leanard Guiriba | AI Automation Specialist</title>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <meta name="description"
-    content="Portfolio of John Leanard B. Guiriba, AI Automation Specialist and BS Information Technology Student.">
+      content="John Leanard Guiriba - AI Automation Specialist Portfolio">
 
-<link rel="stylesheet" href="style.css">
+<meta name="author"
+      content="John Leanard B. Guiriba">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>
+    John Leanard Guiriba | AI Automation Specialist
+</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
-<script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
+<!-- GOOGLE FONT -->
+
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet">
+
+
+<!-- =========================
+     CSS
+========================== -->
+
+<style>
+
+    :root {
+
+        --bg: #05070d;
+        --bg2: #090d17;
+        --card: rgba(15, 23, 42, 0.72);
+
+        --white: #f8fafc;
+        --muted: #94a3b8;
+
+        --cyan: #5eead4;
+        --blue: #60a5fa;
+        --purple: #a78bfa;
+
+        --border: rgba(255,255,255,0.08);
+
+        --container: 1200px;
+
+        --radius: 22px;
+
+        --transition:
+            0.35s cubic-bezier(.2,.8,.2,1);
+
+    }
+
+
+    * {
+
+        margin: 0;
+        padding: 0;
+
+        box-sizing: border-box;
+
+    }
+
+
+    html {
+
+        scroll-behavior: smooth;
+
+    }
+
+
+    body {
+
+        font-family: "Inter", sans-serif;
+
+        background:
+            radial-gradient(
+                circle at 20% 10%,
+                rgba(96,165,250,.08),
+                transparent 30%
+            ),
+
+            radial-gradient(
+                circle at 80% 40%,
+                rgba(94,234,212,.06),
+                transparent 30%
+            ),
+
+            var(--bg);
+
+        color: var(--white);
+
+        overflow-x: hidden;
+
+    }
+
+
+    body.modal-open {
+
+        overflow: hidden;
+
+    }
+
+
+    a {
+
+        color: inherit;
+
+        text-decoration: none;
+
+    }
+
+
+    button {
+
+        font-family: inherit;
+
+    }
+
+
+    /* =========================
+       BACKGROUND
+    ========================== */
+
+    .background {
+
+        position: fixed;
+
+        inset: 0;
+
+        pointer-events: none;
+
+        z-index: -5;
+
+        overflow: hidden;
+
+    }
+
+
+    .grid {
+
+        position: absolute;
+
+        inset: 0;
+
+        background-image:
+
+            linear-gradient(
+                rgba(255,255,255,.025) 1px,
+                transparent 1px
+            ),
+
+            linear-gradient(
+                90deg,
+                rgba(255,255,255,.025) 1px,
+                transparent 1px
+            );
+
+        background-size: 60px 60px;
+
+        mask-image:
+            linear-gradient(
+                to bottom,
+                black,
+                transparent
+            );
+
+    }
+
+
+    .orb {
+
+        position: absolute;
+
+        border-radius: 50%;
+
+        filter: blur(100px);
+
+        opacity: .18;
+
+        animation:
+            orbMove 12s
+            ease-in-out
+            infinite
+            alternate;
+
+    }
+
+
+    .orb.one {
+
+        width: 400px;
+        height: 400px;
+
+        background: var(--blue);
+
+        top: -180px;
+        left: -150px;
+
+    }
+
+
+    .orb.two {
+
+        width: 350px;
+        height: 350px;
+
+        background: var(--cyan);
+
+        right: -150px;
+        top: 35%;
+
+        animation-delay: 3s;
+
+    }
+
+
+    .orb.three {
+
+        width: 300px;
+        height: 300px;
+
+        background: var(--purple);
+
+        bottom: -100px;
+        left: 35%;
+
+        animation-delay: 6s;
+
+    }
+
+
+    @keyframes orbMove {
+
+        0% {
+            transform: translate(0,0) scale(1);
+        }
+
+        50% {
+            transform: translate(50px,-30px) scale(1.1);
+        }
+
+        100% {
+            transform: translate(-30px,40px) scale(.95);
+        }
+
+    }
+
+
+    /* =========================
+       CONTAINER
+    ========================== */
+
+    .container {
+
+        width: min(
+            var(--container),
+            88%
+        );
+
+        margin: auto;
+
+    }
+
+
+    /* =========================
+       NAVBAR
+    ========================== */
+
+    header {
+
+        position: fixed;
+
+        width: 100%;
+
+        top: 0;
+
+        z-index: 1000;
+
+        transition:
+            var(--transition);
+
+    }
+
+
+    header.scrolled {
+
+        background:
+            rgba(5,7,13,.82);
+
+        backdrop-filter:
+            blur(20px);
+
+        border-bottom:
+            1px solid
+            var(--border);
+
+    }
+
+
+    .nav {
+
+        height: 78px;
+
+        display: flex;
+
+        justify-content:
+            space-between;
+
+        align-items: center;
+
+    }
+
+
+    .logo {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 11px;
+
+        font-family:
+            "Space Grotesk";
+
+        font-weight: 700;
+
+    }
+
+
+    .logo-mark {
+
+        width: 40px;
+        height: 40px;
+
+        display: grid;
+
+        place-items: center;
+
+        border-radius: 11px;
+
+        background:
+            linear-gradient(
+                135deg,
+                var(--cyan),
+                var(--blue)
+            );
+
+        color: #061018;
+
+        box-shadow:
+            0 0 30px
+            rgba(94,234,212,.15);
+
+    }
+
+
+    .logo-text {
+
+        font-size: 16px;
+
+    }
+
+
+    .logo-text span {
+
+        color: var(--cyan);
+
+    }
+
+
+    nav {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 32px;
+
+    }
+
+
+    nav a {
+
+        font-size: 13px;
+
+        color: var(--muted);
+
+        transition:
+            var(--transition);
+
+    }
+
+
+    nav a:hover {
+
+        color: var(--cyan);
+
+    }
+
+
+    .nav-cta {
+
+        padding:
+            10px 17px;
+
+        border:
+            1px solid
+            rgba(94,234,212,.3);
+
+        border-radius: 10px;
+
+        color: var(--cyan) !important;
+
+    }
+
+
+    .menu-btn {
+
+        display: none;
+
+        width: 42px;
+        height: 42px;
+
+        border:
+            1px solid
+            var(--border);
+
+        border-radius: 10px;
+
+        background:
+            rgba(255,255,255,.03);
+
+        color: white;
+
+        cursor: pointer;
+
+        font-size: 20px;
+
+    }
+
+
+    /* =========================
+       HERO
+    ========================== */
+
+    .hero {
+
+        min-height: 100vh;
+
+        display: grid;
+
+        grid-template-columns:
+            1.05fr .95fr;
+
+        align-items: center;
+
+        gap: 80px;
+
+        padding-top: 110px;
+
+    }
+
+
+    .availability {
+
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 9px;
+
+        padding:
+            8px 13px;
+
+        border:
+            1px solid
+            var(--border);
+
+        background:
+            rgba(255,255,255,.025);
+
+        border-radius: 100px;
+
+        color: var(--muted);
+
+        font-size: 12px;
+
+        margin-bottom: 25px;
+
+    }
+
+
+    .availability-dot {
+
+        width: 7px;
+        height: 7px;
+
+        border-radius: 50%;
+
+        background:
+            #22c55e;
+
+        box-shadow:
+            0 0 14px
+            #22c55e;
+
+    }
+
+
+    .eyebrow {
+
+        color: var(--cyan);
+
+        font-size: 14px;
+
+        font-weight: 600;
+
+        margin-bottom: 12px;
+
+    }
+
+
+    .hero h1 {
+
+        font-family:
+            "Space Grotesk";
+
+        font-size:
+            clamp(
+                48px,
+                7vw,
+                88px
+            );
+
+        line-height:
+            .92;
+
+        letter-spacing:
+            -4px;
+
+        margin-bottom: 25px;
+
+    }
+
+
+    .gradient-text {
+
+        background:
+            linear-gradient(
+                90deg,
+                var(--cyan),
+                var(--blue),
+                var(--purple)
+            );
+
+        -webkit-background-clip:
+            text;
+
+        background-clip:
+            text;
+
+        color: transparent;
+
+    }
+
+
+    .hero-role {
+
+        font-family:
+            "Space Grotesk";
+
+        font-size:
+            clamp(
+                20px,
+                3vw,
+                28px
+            );
+
+        color:
+            var(--muted);
+
+        margin-bottom: 22px;
+
+    }
+
+
+    .hero-description {
+
+        max-width: 620px;
+
+        color: var(--muted);
+
+        line-height: 1.8;
+
+        font-size: 15px;
+
+    }
+
+
+    .hero-buttons {
+
+        display: flex;
+
+        gap: 13px;
+
+        margin-top: 32px;
+
+    }
+
+
+    .btn {
+
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 10px;
+
+        padding:
+            14px 20px;
+
+        border-radius: 11px;
+
+        font-size: 13px;
+
+        font-weight: 700;
+
+        transition:
+            var(--transition);
+
+    }
+
+
+    .btn-primary {
+
+        background:
+            linear-gradient(
+                135deg,
+                var(--cyan),
+                var(--blue)
+            );
+
+        color: #061018;
+
+    }
+
+
+    .btn-primary:hover {
+
+        transform:
+            translateY(-4px);
+
+        box-shadow:
+            0 15px 35px
+            rgba(96,165,250,.2);
+
+    }
+
+
+    .btn-secondary {
+
+        border:
+            1px solid
+            var(--border);
+
+        background:
+            rgba(255,255,255,.025);
+
+    }
+
+
+    .btn-secondary:hover {
+
+        border-color:
+            rgba(94,234,212,.4);
+
+        transform:
+            translateY(-4px);
+
+    }
+
+
+    .hero-mini {
+
+        display: flex;
+
+        gap: 30px;
+
+        margin-top: 45px;
+
+    }
+
+
+    .mini-item {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 10px;
+
+    }
+
+
+    .mini-icon {
+
+        font-size: 20px;
+
+    }
+
+
+    .mini-item strong {
+
+        display: block;
+
+        font-size: 12px;
+
+    }
+
+
+    .mini-item small {
+
+        color: var(--muted);
+
+        font-size: 11px;
+
+    }
+
+
+    /* =========================
+       HERO VISUAL
+    ========================== */
+
+    .hero-visual {
+
+        position: relative;
+
+        min-height: 560px;
+
+        display: grid;
+
+        place-items: center;
+
+    }
+
+
+    .visual-ring {
+
+        position: absolute;
+
+        width: 460px;
+        height: 460px;
+
+        border-radius: 50%;
+
+        border:
+            1px solid
+            rgba(94,234,212,.1);
+
+        animation:
+            rotate 20s
+            linear
+            infinite;
+
+    }
+
+
+    .visual-ring::before {
+
+        content: "";
+
+        position: absolute;
+
+        width: 9px;
+        height: 9px;
+
+        border-radius: 50%;
+
+        background:
+            var(--cyan);
+
+        top: 25px;
+        left: 100px;
+
+        box-shadow:
+            0 0 20px
+            var(--cyan);
+
+    }
+
+
+    @keyframes rotate {
+
+        to {
+            transform: rotate(360deg);
+        }
+
+    }
+
+
+    .profile-card {
+
+        position: relative;
+
+        width: 330px;
+
+        padding: 10px;
+
+        border-radius: 28px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(255,255,255,.12),
+                rgba(255,255,255,.025)
+            );
+
+        border:
+            1px solid
+            var(--border);
+
+        backdrop-filter:
+            blur(15px);
+
+        box-shadow:
+            0 40px 100px
+            rgba(0,0,0,.45);
+
+        z-index: 3;
+
+    }
+
+
+    .profile-photo {
+
+        height: 410px;
+
+        border-radius: 20px;
+
+        overflow: hidden;
+
+        background:
+            radial-gradient(
+                circle at center,
+                #162235,
+                #080c14
+            );
+
+        position: relative;
+
+    }
+
+
+    .profile-photo::after {
+
+        content: "";
+
+        position: absolute;
+
+        inset: 0;
+
+        background:
+            linear-gradient(
+                to top,
+                rgba(5,7,13,.5),
+                transparent 50%
+            );
+
+    }
+
+
+    .profile-photo img {
+
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+
+    }
+
+
+    .profile-placeholder {
+
+        width: 100%;
+        height: 100%;
+
+        display: grid;
+
+        place-items: center;
+
+        text-align: center;
+
+        padding: 30px;
+
+        color: var(--muted);
+
+    }
+
+
+    .profile-placeholder-icon {
+
+        font-size: 70px;
+
+        display: block;
+
+        margin-bottom: 15px;
+
+    }
+
+
+    .profile-info {
+
+        position: absolute;
+
+        left: 25px;
+        right: 25px;
+
+        bottom: 25px;
+
+        z-index: 5;
+
+        padding: 14px;
+
+        border-radius: 14px;
+
+        background:
+            rgba(5,7,13,.75);
+
+        backdrop-filter:
+            blur(15px);
+
+        border:
+            1px solid
+            var(--border);
+
+    }
+
+
+    .profile-info strong {
+
+        display: block;
+
+        font-size: 13px;
+
+    }
+
+
+    .profile-info small {
+
+        color: var(--muted);
+
+        font-size: 11px;
+
+    }
+
+
+    /* TOOL FLOATING CARDS */
+
+    .tool-float {
+
+        position: absolute;
+
+        z-index: 5;
+
+        padding:
+            11px 15px;
+
+        border-radius: 11px;
+
+        background:
+            rgba(8,12,20,.85);
+
+        border:
+            1px solid
+            var(--border);
+
+        backdrop-filter:
+            blur(15px);
+
+        font-size: 12px;
+
+        font-weight: 600;
+
+        box-shadow:
+            0 15px 40px
+            rgba(0,0,0,.25);
+
+        animation:
+            floating 5s
+            ease-in-out
+            infinite;
+
+    }
+
+
+    .zapier {
+
+        top: 13%;
+        left: 2%;
+
+    }
+
+
+    .n8n {
+
+        top: 48%;
+        right: 0;
+
+        animation-delay:
+            1s;
+
+    }
+
+
+    .make {
+
+        bottom: 12%;
+        left: 4%;
+
+        animation-delay:
+            2s;
+
+    }
+
+
+    .ghl {
+
+        bottom: 8%;
+        right: 5%;
+
+        animation-delay:
+            3s;
+
+    }
+
+
+    @keyframes floating {
+
+        0%,100% {
+            transform:
+                translateY(0);
+        }
+
+        50% {
+            transform:
+                translateY(-13px);
+        }
+
+    }
+
+
+    /* =========================
+       SECTIONS
+    ========================== */
+
+    section {
+
+        scroll-margin-top:
+            80px;
+
+    }
+
+
+    .section {
+
+        padding:
+            120px 0;
+
+    }
+
+
+    .section-label {
+
+        color:
+            var(--cyan);
+
+        font-size: 11px;
+
+        letter-spacing:
+            2px;
+
+        font-weight: 800;
+
+    }
+
+
+    .section-title {
+
+        font-family:
+            "Space Grotesk";
+
+        font-size:
+            clamp(
+                35px,
+                5vw,
+                58px
+            );
+
+        line-height: 1.05;
+
+        letter-spacing:
+            -2px;
+
+        margin-top: 14px;
+
+        max-width: 750px;
+
+    }
+
+
+    .section-subtitle {
+
+        color:
+            var(--muted);
+
+        max-width: 650px;
+
+        line-height: 1.8;
+
+        margin-top: 18px;
+
+        font-size: 14px;
+
+    }
+
+
+    /* =========================
+       ABOUT
+    ========================== */
+
+    .about-grid {
+
+        display: grid;
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 70px;
+
+        margin-top: 55px;
+
+    }
+
+
+    .about-text {
+
+        color:
+            var(--muted);
+
+        line-height: 1.9;
+
+        font-size: 14px;
+
+    }
+
+
+    .about-text p {
+
+        margin-bottom: 20px;
+
+    }
+
+
+    .about-highlight {
+
+        margin-top: 28px;
+
+        padding:
+            18px 20px;
+
+        border-left:
+            2px solid
+            var(--cyan);
+
+        background:
+            rgba(94,234,212,.04);
+
+        color:
+            #cbd5e1;
+
+        font-size: 13px;
+
+    }
+
+
+    .stats {
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+        gap: 15px;
+
+    }
+
+
+    .stat {
+
+        padding: 25px;
+
+        border:
+            1px solid
+            var(--border);
+
+        background:
+            var(--card);
+
+        border-radius:
+            var(--radius);
+
+        transition:
+            var(--transition);
+
+    }
+
+
+    .stat:hover {
+
+        transform:
+            translateY(-7px);
+
+        border-color:
+            rgba(94,234,212,.3);
+
+    }
+
+
+    .stat-number {
+
+        font-family:
+            "Space Grotesk";
+
+        font-size: 30px;
+
+        color:
+            var(--cyan);
+
+    }
+
+
+    .stat h3 {
+
+        margin:
+            12px 0 8px;
+
+        font-size: 16px;
+
+    }
+
+
+    .stat p {
+
+        color:
+            var(--muted);
+
+        font-size: 12px;
+
+        line-height: 1.6;
+
+    }
+
+
+    /* =========================
+       SKILLS
+    ========================== */
+
+    .skills-header {
+
+        text-align: center;
+
+    }
+
+
+    .skills-header .section-title {
+
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+
+
+    .skills-header .section-subtitle {
+
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+
+
+    .skills-grid {
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(3,1fr);
+
+        gap: 18px;
+
+        margin-top: 55px;
+
+    }
+
+
+    .skill-card {
+
+        padding: 27px;
+
+        border:
+            1px solid
+            var(--border);
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(18,27,43,.8),
+                rgba(8,12,20,.7)
+            );
+
+        border-radius:
+            var(--radius);
+
+        transition:
+            var(--transition);
+
+    }
+
+
+    .skill-card:hover {
+
+        transform:
+            translateY(-8px);
+
+        border-color:
+            rgba(96,165,250,.35);
+
+    }
+
+
+    .skill-icon {
+
+        font-size: 28px;
+
+        margin-bottom: 18px;
+
+    }
+
+
+    .skill-card h3 {
+
+        font-size: 17px;
+
+        margin-bottom: 18px;
+
+    }
+
+
+    .tags {
+
+        display: flex;
+
+        flex-wrap: wrap;
+
+        gap: 7px;
+
+    }
+
+
+    .tags span {
+
+        padding:
+            7px 9px;
+
+        background:
+            rgba(255,255,255,.045);
+
+        border:
+            1px solid
+            rgba(255,255,255,.04);
+
+        border-radius: 7px;
+
+        color:
+            var(--muted);
+
+        font-size: 10px;
+
+    }
+
+
+    /* =========================
+       AUTOMATION FLOW
+    ========================== */
+
+    .automation-section {
+
+        padding:
+            80px 0;
+
+    }
+
+
+    .flow {
+
+        margin-top: 45px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 0;
+
+    }
+
+
+    .flow-node {
+
+        width: 150px;
+
+        min-height: 110px;
+
+        padding: 18px;
+
+        display: grid;
+
+        place-items: center;
+
+        text-align: center;
+
+        border:
+            1px solid
+            var(--border);
+
+        background:
+            var(--card);
+
+        border-radius: 16px;
+
+        position: relative;
+
+    }
+
+
+    .flow-node strong {
+
+        font-size: 12px;
+
+        display: block;
+
+        margin-top: 8px;
+
+    }
+
+
+    .flow-node small {
+
+        color:
+            var(--muted);
+
+        font-size: 9px;
+
+    }
+
+
+    .flow-icon {
+
+        font-size: 25px;
+
+    }
+
+
+    .flow-line {
+
+        width: 65px;
+
+        height: 1px;
+
+        background:
+            linear-gradient(
+                90deg,
+                transparent,
+                var(--cyan),
+                transparent
+            );
+
+        position: relative;
+
+    }
+
+
+    .flow-line::after {
+
+        content: "";
+
+        position: absolute;
+
+        width: 6px;
+        height: 6px;
+
+        border-radius: 50%;
+
+        background:
+            var(--cyan);
+
+        top: -2.5px;
+
+        animation:
+            flowMove
+            1.5s
+            linear
+            infinite;
+
+    }
+
+
+    @keyframes flowMove {
+
+        from {
+            left: 0;
+        }
+
+        to {
+            left: 100%;
+        }
+
+    }
+
+
+    /* =========================
+       PROJECTS
+    ========================== */
+
+    .projects-header {
+
+        display: flex;
+
+        justify-content:
+            space-between;
+
+        align-items:
+            flex-end;
+
+        gap: 30px;
+
+    }
+
+
+    .project-grid {
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(3,1fr);
+
+        gap: 18px;
+
+        margin-top: 55px;
+
+    }
+
+
+    .project {
+
+        min-height: 350px;
+
+        padding: 28px;
+
+        border:
+            1px solid
+            var(--border);
+
+        border-radius:
+            var(--radius);
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(17,25,40,.85),
+                rgba(7,10,17,.85)
+            );
+
+        display: flex;
+
+        flex-direction: column;
+
+        transition:
+            var(--transition);
+
+        cursor: pointer;
+
+    }
+
+
+    .project:hover {
+
+        transform:
+            translateY(-9px);
+
+        border-color:
+            rgba(94,234,212,.35);
+
+        box-shadow:
+            0 25px 60px
+            rgba(0,0,0,.2);
+
+    }
+
+
+    .project-top {
+
+        display: flex;
+
+        justify-content:
+            space-between;
+
+        align-items:
+            center;
+
+    }
+
+
+    .project-type {
+
+        font-size: 9px;
+
+        letter-spacing:
+            1.5px;
+
+        color:
+            var(--cyan);
+
+        font-weight: 800;
+
+    }
+
+
+    .project-number {
+
+        color:
+            var(--muted);
+
+        font-size: 11px;
+
+    }
+
+
+    .project-icon {
+
+        font-size: 38px;
+
+        margin:
+            35px 0 20px;
+
+    }
+
+
+    .project h3 {
+
+        font-family:
+            "Space Grotesk";
+
+        font-size: 19px;
+
+        line-height: 1.35;
+
+        margin-bottom: 12px;
+
+    }
+
+
+    .project p {
+
+        color:
+            var(--muted);
+
+        line-height: 1.7;
+
+        font-size: 12px;
+
+    }
+
+
+    .project-bottom {
+
+        margin-top: auto;
+
+        padding-top: 22px;
+
+        display: flex;
+
+        justify-content:
+            space-between;
+
+        align-items: center;
+
+    }
+
+
+    .project-tools {
+
+        display: flex;
+
+        flex-wrap: wrap;
+
+        gap: 5px;
+
+    }
+
+
+    .project-tools span {
+
+        padding:
+            5px 7px;
+
+        border-radius: 5px;
+
+        background:
+            rgba(94,234,212,.06);
+
+        color:
+            var(--cyan);
+
+        font-size: 9px;
+
+    }
+
+
+    .view-project {
+
+        color:
+            var(--muted);
+
+        font-size: 12px;
+
+    }
+
+
+    /* =========================
+       CTA
+    ========================== */
+
+    .cta {
+
+        margin:
+            30px auto 110px;
+
+        width:
+            min(1100px,88%);
+
+        padding:
+            90px 50px;
+
+        text-align: center;
+
+        border:
+            1px solid
+            var(--border);
+
+        border-radius:
+            30px;
+
+        background:
+            radial-gradient(
+                circle at center,
+                rgba(94,234,212,.09),
+                transparent 55%
+            );
+
+    }
+
+
+    .cta h2 {
+
+        font-family:
+            "Space Grotesk";
+
+        font-size:
+            clamp(
+                38px,
+                6vw,
+                65px
+            );
+
+        line-height:
+            1.05;
+
+        margin:
+            15px auto;
+
+        max-width: 750px;
+
+    }
+
+
+    .cta p {
+
+        color:
+            var(--muted);
+
+        max-width: 600px;
+
+        margin:
+            0 auto 30px;
+
+        line-height: 1.8;
+
+        font-size: 13px;
+
+    }
+
+
+    /* =========================
+       CONTACT
+    ========================== */
+
+    .contact-grid {
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(3,1fr);
+
+        gap: 15px;
+
+        margin-top: 45px;
+
+    }
+
+
+    .contact-card {
+
+        padding: 23px;
+
+        border:
+            1px solid
+            var(--border);
+
+        background:
+            var(--card);
+
+        border-radius:
+            17px;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 15px;
+
+        transition:
+            var(--transition);
+
+    }
+
+
+    .contact-card:hover {
+
+        transform:
+            translateY(-6px);
+
+        border-color:
+            rgba(94,234,212,.35);
+
+    }
+
+
+    .contact-icon {
+
+        width: 45px;
+        height: 45px;
+
+        display: grid;
+
+        place-items: center;
+
+        border-radius: 11px;
+
+        background:
+            rgba(94,234,212,.08);
+
+        color:
+            var(--cyan);
+
+        font-weight: 800;
+
+    }
+
+
+    .contact-card small {
+
+        display: block;
+
+        color:
+            var(--muted);
+
+        font-size: 10px;
+
+        margin-bottom: 5px;
+
+    }
+
+
+    .contact-card strong {
+
+        display: block;
+
+        font-size: 12px;
+
+        word-break: break-word;
+
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+
+        border-top:
+            1px solid
+            var(--border);
+
+        padding:
+            30px 0;
+
+    }
+
+
+    .footer-inner {
+
+        display: flex;
+
+        justify-content:
+            space-between;
+
+        align-items:
+            center;
+
+        color:
+            var(--muted);
+
+        font-size: 11px;
+
+    }
+
+
+    .footer-brand {
+
+        color:
+            var(--white);
+
+        font-weight: 700;
+
+    }
+
+
+    .back-top {
+
+        color:
+            var(--cyan);
+
+    }
+
+
+    /* =========================
+       MODAL
+    ========================== */
+
+    .modal {
+
+        position: fixed;
+
+        inset: 0;
+
+        z-index: 2000;
+
+        background:
+            rgba(0,0,0,.75);
+
+        backdrop-filter:
+            blur(15px);
+
+        display: none;
+
+        align-items: center;
+
+        justify-content: center;
+
+        padding: 20px;
+
+    }
+
+
+    .modal.active {
+
+        display: flex;
+
+    }
+
+
+    .modal-content {
+
+        width:
+            min(650px,100%);
+
+        max-height:
+            85vh;
+
+        overflow-y: auto;
+
+        padding: 35px;
+
+        border:
+            1px solid
+            var(--border);
+
+        border-radius: 24px;
+
+        background:
+            #0b111d;
+
+        position: relative;
+
+        animation:
+            modalIn
+            .35s
+            ease;
+
+    }
+
+
+    @keyframes modalIn {
+
+        from {
+
+            opacity: 0;
+
+            transform:
+                translateY(30px)
+                scale(.97);
+
+        }
+
+        to {
+
+            opacity: 1;
+
+            transform:
+                translateY(0)
+                scale(1);
+
+        }
+
+    }
+
+
+    .modal-close {
+
+        position: absolute;
+
+        right: 20px;
+        top: 20px;
+
+        width: 35px;
+        height: 35px;
+
+        border:
+            1px solid
+            var(--border);
+
+        border-radius: 9px;
+
+        background:
+            rgba(255,255,255,.04);
+
+        color:
+            white;
+
+        cursor: pointer;
+
+    }
+
+
+    .modal-content h2 {
+
+        font-family:
+            "Space Grotesk";
+
+        font-size: 30px;
+
+        margin:
+            15px 0;
+
+    }
+
+
+    .modal-content p {
+
+        color:
+            var(--muted);
+
+        line-height: 1.8;
+
+        font-size: 13px;
+
+    }
+
+
+    .modal-stack {
+
+        display: flex;
+
+        flex-wrap: wrap;
+
+        gap: 8px;
+
+        margin-top: 25px;
+
+    }
+
+
+    .modal-stack span {
+
+        padding:
+            8px 11px;
+
+        border-radius: 7px;
+
+        background:
+            rgba(94,234,212,.08);
+
+        color:
+            var(--cyan);
+
+        font-size: 10px;
+
+    }
+
+
+    /* =========================
+       REVEAL
+    ========================== */
+
+    .reveal {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px);
+
+        transition:
+            opacity .7s ease,
+            transform .7s ease;
+
+    }
+
+
+    .reveal.show {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media(max-width: 950px) {
+
+        .hero {
+
+            grid-template-columns: 1fr;
+
+            text-align: center;
+
+            padding-bottom: 80px;
+
+        }
+
+
+        .hero-description {
+
+            margin: auto;
+
+        }
+
+
+        .hero-buttons,
+        .hero-mini {
+
+            justify-content: center;
+
+        }
+
+
+        .hero-visual {
+
+            min-height: 500px;
+
+        }
+
+
+        .about-grid {
+
+            grid-template-columns: 1fr;
+
+        }
+
+
+        .skills-grid {
+
+            grid-template-columns:
+                repeat(2,1fr);
+
+        }
+
+
+        .project-grid {
+
+            grid-template-columns:
+                repeat(2,1fr);
+
+        }
+
+
+        .contact-grid {
+
+            grid-template-columns:
+                1fr;
+
+        }
+
+    }
+
+
+    @media(max-width: 700px) {
+
+        .container {
+
+            width: 90%;
+
+        }
+
+
+        nav {
+
+            position: absolute;
+
+            top: 75px;
+
+            left: 5%;
+
+            width: 90%;
+
+            padding: 22px;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 15px;
+
+            background:
+                rgba(7,10,17,.97);
+
+            backdrop-filter:
+                blur(20px);
+
+            flex-direction:
+                column;
+
+            gap: 20px;
+
+            display: none;
+
+        }
+
+
+        nav.active {
+
+            display: flex;
+
+        }
+
+
+        .menu-btn {
+
+            display: block;
+
+        }
+
+
+        .nav-cta {
+
+            width: 100%;
+
+            text-align: center;
+
+        }
+
+
+        .hero h1 {
+
+            letter-spacing:
+                -2px;
+
+        }
+
+
+        .hero-buttons {
+
+            flex-direction:
+                column;
+
+            width: 100%;
+
+        }
+
+
+        .btn {
+
+            justify-content:
+                center;
+
+        }
+
+
+        .hero-mini {
+
+            flex-direction:
+                column;
+
+            align-items:
+                flex-start;
+
+            text-align:
+                left;
+
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+
+
+        .visual-ring {
+
+            width: 330px;
+            height: 330px;
+
+        }
+
+
+        .profile-card {
+
+            width: 280px;
+
+        }
+
+
+        .profile-photo {
+
+            height: 360px;
+
+        }
+
+
+        .tool-float {
+
+            display: none;
+
+        }
+
+
+        .skills-grid,
+        .project-grid {
+
+            grid-template-columns: 1fr;
+
+        }
+
+
+        .projects-header {
+
+            display: block;
+
+        }
+
+
+        .flow {
+
+            flex-direction:
+                column;
+
+        }
+
+
+        .flow-line {
+
+            width: 1px;
+
+            height: 40px;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    transparent,
+                    var(--cyan),
+                    transparent
+                );
+
+        }
+
+
+        .flow-line::after {
+
+            animation:
+                flowMoveVertical
+                1.5s
+                linear
+                infinite;
+
+        }
+
+
+        @keyframes flowMoveVertical {
+
+            from {
+                top: 0;
+            }
+
+            to {
+                top: 100%;
+            }
+
+        }
+
+
+        .cta {
+
+            padding:
+                65px 25px;
+
+        }
+
+
+        .footer-inner {
+
+            flex-direction:
+                column;
+
+            gap: 15px;
+
+            text-align:
+                center;
+
+        }
+
+    }
+
+</style>
 ```
 
 </head>
@@ -26,145 +2485,322 @@
 <body>
 
 ```
-<!-- BACKGROUND EFFECT -->
+<!-- =========================
+     ANIMATED BACKGROUND
+========================== -->
+
 <div class="background">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
+
     <div class="grid"></div>
+
+    <div class="orb one"></div>
+
+    <div class="orb two"></div>
+
+    <div class="orb three"></div>
+
 </div>
 
-<!-- NAVBAR -->
-<header class="navbar">
 
-    <a href="#home" class="logo">
-        <span>JG</span>
-        Portfolio
-    </a>
+<!-- =========================
+     NAVBAR
+========================== -->
 
-    <nav id="navMenu">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-    </nav>
+<header id="header">
 
-    <button class="menu-btn" id="menuBtn">
-        ☰
-    </button>
+    <div class="container nav">
+
+        <a href="#home" class="logo">
+
+            <div class="logo-mark">
+                JG
+            </div>
+
+            <div class="logo-text">
+                John <span>Guiriba</span>
+            </div>
+
+        </a>
+
+
+        <nav id="nav">
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+            <a href="#skills">
+                Skills
+            </a>
+
+            <a href="#projects">
+                Projects
+            </a>
+
+            <a href="#contact" class="nav-cta">
+                Let's Connect
+            </a>
+
+        </nav>
+
+
+        <button
+            class="menu-btn"
+            id="menuBtn"
+            aria-label="Open menu">
+
+            ☰
+
+        </button>
+
+    </div>
 
 </header>
 
 
-<!-- HERO -->
+
 <main>
 
-    <section class="hero" id="home">
 
-        <div class="hero-content">
+    <!-- =========================
+         HERO
+    ========================== -->
 
-            <div class="badge">
-                <span class="status-dot"></span>
-                Available for Opportunities
-            </div>
+    <section id="home">
 
-            <p class="intro">
-                Hello, I'm
-            </p>
-
-            <h1>
-                JOHN LEANARD
-                <span>GUIRIBA</span>
-            </h1>
-
-            <h2>
-                AI Automation Specialist
-            </h2>
-
-            <p class="hero-description">
-
-                I build smart automation systems that connect tools,
-                reduce repetitive work, organize data, and help
-                businesses operate more efficiently.
-
-            </p>
-
-            <div class="hero-buttons">
-
-                <a href="#projects" class="btn primary-btn">
-                    View My Work
-                    <span>→</span>
-                </a>
-
-                <a href="#contact" class="btn secondary-btn">
-                    Contact Me
-                </a>
-
-            </div>
+        <div class="container hero">
 
 
-            <div class="quick-info">
+            <div class="hero-content reveal">
 
-                <div class="info-item">
-                    <span class="info-icon">🤖</span>
-                    <div>
-                        <strong>AI Automation</strong>
-                        <small>Workflows & AI Agents</small>
+                <div class="availability">
+
+                    <span class="availability-dot"></span>
+
+                    Available for Opportunities
+
+                </div>
+
+
+                <div class="eyebrow">
+
+                    AI AUTOMATION • INTEGRATION • AI AGENTS
+
+                </div>
+
+
+                <h1>
+
+                    JOHN LEANARD
+
+                    <span class="gradient-text">
+                        GUIRIBA
+                    </span>
+
+                </h1>
+
+
+                <div class="hero-role">
+
+                    AI Automation Specialist
+
+                </div>
+
+
+                <p class="hero-description">
+
+                    I build smart, efficient, and reliable automation
+                    systems that reduce repetitive work, connect tools,
+                    organize data, and help businesses operate more
+                    efficiently.
+
+                </p>
+
+
+                <div class="hero-buttons">
+
+                    <a
+                        href="#projects"
+                        class="btn btn-primary">
+
+                        Explore My Work
+                        <span>↗</span>
+
+                    </a>
+
+
+                    <a
+                        href="#contact"
+                        class="btn btn-secondary">
+
+                        Let's Talk
+
+                    </a>
+
+                </div>
+
+
+                <div class="hero-mini">
+
+                    <div class="mini-item">
+
+                        <span class="mini-icon">
+                            🤖
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                AI Automation
+                            </strong>
+
+                            <small>
+                                AI Agents & Workflows
+                            </small>
+
+                        </div>
+
                     </div>
-                </div>
-
-                <div class="info-item">
-                    <span class="info-icon">⚡</span>
-                    <div>
-                        <strong>Integrations</strong>
-                        <small>APIs, Webhooks & Tools</small>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
 
 
-        <!-- PROFILE AREA -->
-        <div class="hero-visual">
+                    <div class="mini-item">
 
-            <div class="profile-glow"></div>
+                        <span class="mini-icon">
+                            ⚡
+                        </span>
 
-            <div class="profile-card">
+                        <div>
 
-                <div class="profile-image">
+                            <strong>
+                                Integrations
+                            </strong>
 
-                    <!-- Replace with your GIF or image -->
-                    <img src="assets/profile.gif"
-                        alt="John Leanard Guiriba">
+                            <small>
+                                APIs & Webhooks
+                            </small>
 
-                </div>
+                        </div>
 
-                <div class="profile-status">
-
-                    <span class="pulse"></span>
-
-                    <div>
-                        <strong>Automation Systems</strong>
-                        <small>Designing smarter workflows</small>
                     </div>
 
+
+                    <div class="mini-item">
+
+                        <span class="mini-icon">
+                            🎓
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                BS Information Technology
+                            </strong>
+
+                            <small>
+                                Continuous Learning
+                            </small>
+
+                        </div>
+
+                    </div>
+
                 </div>
 
             </div>
 
 
-            <div class="floating-card card-zapier">
-                ⚡ Zapier
-            </div>
 
-            <div class="floating-card card-n8n">
-                ◉ n8n
-            </div>
+            <!-- HERO VISUAL -->
 
-            <div class="floating-card card-make">
-                ⬡ Make
+            <div class="hero-visual reveal">
+
+                <div class="visual-ring"></div>
+
+
+                <div class="profile-card">
+
+                    <div class="profile-photo">
+
+                        <!--
+                            PUT YOUR PHOTO/GIF HERE
+
+                            Example:
+                            assets/profile.gif
+
+                            or:
+                            assets/profile.jpg
+                        -->
+
+                        <div class="profile-placeholder">
+
+                            <div>
+
+                                <span
+                                    class="profile-placeholder-icon">
+                                    👨‍💻
+                                </span>
+
+                                <strong>
+                                    Your Profile Photo / GIF
+                                </strong>
+
+                                <br>
+
+                                <small>
+                                    Replace this area with your
+                                    professional photo or GIF.
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                        <!--
+                        <img
+                            src="assets/profile.gif"
+                            alt="John Leanard Guiriba">
+                        -->
+
+                    </div>
+
+
+                    <div class="profile-info">
+
+                        <strong>
+                            Automation Systems
+                        </strong>
+
+                        <small>
+                            Designing smarter workflows
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FLOATING TOOLS -->
+
+                <div class="tool-float zapier">
+                    ⚡ Zapier
+                </div>
+
+                <div class="tool-float n8n">
+                    ◉ n8n
+                </div>
+
+                <div class="tool-float make">
+                    ⬡ Make.com
+                </div>
+
+                <div class="tool-float ghl">
+                    ◈ GoHighLevel
+                </div>
+
             </div>
 
         </div>
@@ -172,115 +2808,152 @@
     </section>
 
 
-    <!-- ABOUT -->
-    <section class="section about-section" id="about">
 
-        <div class="section-heading">
+    <!-- =========================
+         ABOUT
+    ========================== -->
+
+    <section
+        id="about"
+        class="section">
+
+        <div class="container">
 
             <span class="section-label">
                 ABOUT ME
             </span>
 
-            <h2>
+
+            <h2 class="section-title reveal">
+
                 Building systems that
-                <span>work smarter.</span>
+                <span class="gradient-text">
+                    work smarter.
+                </span>
+
             </h2>
 
-        </div>
 
+            <div class="about-grid">
 
-        <div class="about-grid">
-
-            <div class="about-text">
-
-                <p>
-
-                    I am an AI Automation Specialist focused on building
-                    smart, efficient, and reliable workflows that reduce
-                    repetitive tasks and improve business processes.
-
-                </p>
-
-                <p>
-
-                    I work with automation platforms, AI tools, APIs,
-                    webhooks, CRMs, and productivity tools to create
-                    connected systems that help businesses save time,
-                    manage leads, organize data, and streamline
-                    everyday operations.
-
-                </p>
-
-                <p>
-
-                    Currently pursuing a Bachelor of Science in Information
-                    Technology, I continuously develop my technical and
-                    problem-solving skills while exploring new automation
-                    technologies and AI-powered solutions.
-
-                </p>
-
-            </div>
-
-
-            <div class="about-stats">
-
-                <div class="stat-card">
-
-                    <span>01</span>
-
-                    <h3>
-                        Automation
-                    </h3>
+                <div class="about-text reveal">
 
                     <p>
-                        Smart workflows that reduce manual work.
+
+                        I am an AI Automation Specialist focused on
+                        building smart, efficient, and reliable
+                        workflows that reduce repetitive tasks and
+                        improve business processes.
+
                     </p>
+
+
+                    <p>
+
+                        I work with n8n, Make.com, Zapier,
+                        GoHighLevel, ChatGPT, Google Sheets, Notion,
+                        APIs, webhooks, and other business tools to
+                        create practical automation solutions.
+
+                    </p>
+
+
+                    <p>
+
+                        Currently pursuing a Bachelor of Science in
+                        Information Technology, I combine technical
+                        skills, problem-solving, and a strong
+                        willingness to learn to build useful
+                        automation systems.
+
+                    </p>
+
+
+                    <div class="about-highlight">
+
+                        My goal is simple:
+                        <strong>
+                            turn repetitive manual processes into
+                            organized, connected, and intelligent
+                            workflows.
+                        </strong>
+
+                    </div>
 
                 </div>
 
 
-                <div class="stat-card">
-
-                    <span>02</span>
-
-                    <h3>
-                        Integration
-                    </h3>
-
-                    <p>
-                        Connecting apps, APIs, data, and systems.
-                    </p>
-
-                </div>
+                <div class="stats reveal">
 
 
-                <div class="stat-card">
+                    <div class="stat">
 
-                    <span>03</span>
+                        <div class="stat-number">
+                            01
+                        </div>
 
-                    <h3>
-                        AI Solutions
-                    </h3>
+                        <h3>
+                            Automation
+                        </h3>
 
-                    <p>
-                        AI agents and intelligent automation workflows.
-                    </p>
+                        <p>
+                            Building workflows that reduce repetitive
+                            manual tasks.
+                        </p>
 
-                </div>
+                    </div>
 
 
-                <div class="stat-card">
+                    <div class="stat">
 
-                    <span>04</span>
+                        <div class="stat-number">
+                            02
+                        </div>
 
-                    <h3>
-                        Growth
-                    </h3>
+                        <h3>
+                            Integration
+                        </h3>
 
-                    <p>
-                        Continuously learning modern automation tools.
-                    </p>
+                        <p>
+                            Connecting apps, APIs, webhooks, and data.
+                        </p>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <div class="stat-number">
+                            03
+                        </div>
+
+                        <h3>
+                            AI Solutions
+                        </h3>
+
+                        <p>
+                            Designing AI-powered assistants and agents.
+                        </p>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <div class="stat-number">
+                            04
+                        </div>
+
+                        <h3>
+                            Problem Solving
+                        </h3>
+
+                        <p>
+                            Finding practical ways to improve business
+                            processes.
+                        </p>
+
+                    </div>
 
                 </div>
 
@@ -291,579 +2964,920 @@
     </section>
 
 
-    <!-- SKILLS -->
-    <section class="section skills-section" id="skills">
 
-        <div class="section-heading center">
+    <!-- =========================
+         SKILLS
+    ========================== -->
 
-            <span class="section-label">
-                TECHNICAL SKILLS
+    <section
+        id="skills"
+        class="section">
+
+        <div class="container">
+
+            <div class="skills-header">
+
+                <span class="section-label">
+                    TECHNICAL SKILLS
+                </span>
+
+
+                <h2 class="section-title reveal">
+
+                    My automation
+                    <span class="gradient-text">
+                        toolkit.
+                    </span>
+
+                </h2>
+
+
+                <p class="section-subtitle reveal">
+
+                    Tools and technologies I use to design workflows,
+                    integrate systems, organize data, and build
+                    AI-powered solutions.
+
+                </p>
+
+            </div>
+
+
+            <div class="skills-grid">
+
+
+                <div class="skill-card reveal">
+
+                    <div class="skill-icon">
+                        🤖
+                    </div>
+
+                    <h3>
+                        AI & Automation
+                    </h3>
+
+                    <div class="tags">
+
+                        <span>ChatGPT</span>
+                        <span>Claude</span>
+                        <span>Google Gemini</span>
+                        <span>n8n</span>
+                        <span>Make.com</span>
+                        <span>Zapier</span>
+                        <span>AI Agents</span>
+                        <span>AI Workflows</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="skill-card reveal">
+
+                    <div class="skill-icon">
+                        🔗
+                    </div>
+
+                    <h3>
+                        API & Integration
+                    </h3>
+
+                    <div class="tags">
+
+                        <span>REST APIs</span>
+                        <span>Webhooks</span>
+                        <span>Postman</span>
+                        <span>Gmail</span>
+                        <span>Slack</span>
+                        <span>Discord</span>
+                        <span>Telegram</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="skill-card reveal">
+
+                    <div class="skill-icon">
+                        📈
+                    </div>
+
+                    <h3>
+                        CRM & Marketing
+                    </h3>
+
+                    <div class="tags">
+
+                        <span>GoHighLevel</span>
+                        <span>HubSpot</span>
+                        <span>Lead Management</span>
+                        <span>Sales Pipeline</span>
+                        <span>Appointment Automation</span>
+                        <span>CRM</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="skill-card reveal">
+
+                    <div class="skill-icon">
+                        📊
+                    </div>
+
+                    <h3>
+                        Productivity & Data
+                    </h3>
+
+                    <div class="tags">
+
+                        <span>Notion</span>
+                        <span>Google Sheets</span>
+                        <span>Google Forms</span>
+                        <span>Google Workspace</span>
+                        <span>Airtable</span>
+                        <span>Google Calendar</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="skill-card reveal">
+
+                    <div class="skill-icon">
+                        💻
+                    </div>
+
+                    <h3>
+                        Web Development
+                    </h3>
+
+                    <div class="tags">
+
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="skill-card reveal">
+
+                    <div class="skill-icon">
+                        🛠️
+                    </div>
+
+                    <h3>
+                        Development Tools
+                    </h3>
+
+                    <div class="tags">
+
+                        <span>Git</span>
+                        <span>GitHub</span>
+                        <span>VS Code</span>
+                        <span>MySQL</span>
+                        <span>XAMPP</span>
+                        <span>Laragon</span>
+                        <span>Canva</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         AUTOMATION FLOW
+    ========================== -->
+
+    <section class="automation-section">
+
+        <div class="container">
+
+            <div class="skills-header">
+
+                <span class="section-label">
+                    HOW AUTOMATION CONNECTS
+                </span>
+
+
+                <h2 class="section-title reveal">
+
+                    From trigger to
+                    <span class="gradient-text">
+                        result.
+                    </span>
+
+                </h2>
+
+            </div>
+
+
+            <div class="flow reveal">
+
+
+                <div class="flow-node">
+
+                    <div class="flow-icon">
+                        📥
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Trigger
+                        </strong>
+
+                        <small>
+                            Form / Email
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="flow-line"></div>
+
+
+                <div class="flow-node">
+
+                    <div class="flow-icon">
+                        ⚡
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Automation
+                        </strong>
+
+                        <small>
+                            Zapier / n8n
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="flow-line"></div>
+
+
+                <div class="flow-node">
+
+                    <div class="flow-icon">
+                        🧠
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            AI Processing
+                        </strong>
+
+                        <small>
+                            ChatGPT / Gemini
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="flow-line"></div>
+
+
+                <div class="flow-node">
+
+                    <div class="flow-icon">
+                        📊
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Data
+                        </strong>
+
+                        <small>
+                            Sheets / CRM
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="flow-line"></div>
+
+
+                <div class="flow-node">
+
+                    <div class="flow-icon">
+                        🚀
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Result
+                        </strong>
+
+                        <small>
+                            Faster Operations
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         PROJECTS
+    ========================== -->
+
+    <section
+        id="projects"
+        class="section">
+
+        <div class="container">
+
+            <div class="projects-header">
+
+                <div>
+
+                    <span class="section-label">
+                        CASE STUDIES
+                    </span>
+
+
+                    <h2 class="section-title reveal">
+
+                        Automated systems
+                        <span class="gradient-text">
+                            & workflows.
+                        </span>
+
+                    </h2>
+
+                </div>
+
+
+                <p class="section-subtitle reveal">
+
+                    Practical automation concepts focused on
+                    improving communication, lead management,
+                    scheduling, onboarding, and support.
+
+                </p>
+
+            </div>
+
+
+            <div class="project-grid">
+
+
+                <!-- PROJECT 1 -->
+
+                <article
+                    class="project reveal"
+                    data-project="0">
+
+                    <div class="project-top">
+
+                        <span class="project-type">
+                            ZAPIER AUTOMATION
+                        </span>
+
+                        <span class="project-number">
+                            01
+                        </span>
+
+                    </div>
+
+
+                    <div class="project-icon">
+                        📩
+                    </div>
+
+
+                    <h3>
+                        Inbound Gmail Automated Responder
+                    </h3>
+
+
+                    <p>
+
+                        Automated workflow for processing incoming
+                        Gmail messages and triggering responses,
+                        helping reduce repetitive communication tasks.
+
+                    </p>
+
+
+                    <div class="project-bottom">
+
+                        <div class="project-tools">
+
+                            <span>
+                                Zapier
+                            </span>
+
+                            <span>
+                                Gmail
+                            </span>
+
+                        </div>
+
+
+                        <span class="view-project">
+                            View →
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- PROJECT 2 -->
+
+                <article
+                    class="project reveal"
+                    data-project="1">
+
+                    <div class="project-top">
+
+                        <span class="project-type">
+                            LEAD AUTOMATION
+                        </span>
+
+                        <span class="project-number">
+                            02
+                        </span>
+
+                    </div>
+
+
+                    <div class="project-icon">
+                        📊
+                    </div>
+
+
+                    <h3>
+                        Real-Time Lead Tracking CRM Pipeline
+                    </h3>
+
+
+                    <p>
+
+                        Captures leads from Google Forms and
+                        automatically organizes submitted information
+                        inside Google Sheets.
+
+                    </p>
+
+
+                    <div class="project-bottom">
+
+                        <div class="project-tools">
+
+                            <span>Zapier</span>
+                            <span>Forms</span>
+                            <span>Sheets</span>
+
+                        </div>
+
+
+                        <span class="view-project">
+                            View →
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- PROJECT 3 -->
+
+                <article
+                    class="project reveal"
+                    data-project="2">
+
+                    <div class="project-top">
+
+                        <span class="project-type">
+                            APPOINTMENT AUTOMATION
+                        </span>
+
+                        <span class="project-number">
+                            03
+                        </span>
+
+                    </div>
+
+
+                    <div class="project-icon">
+                        📅
+                    </div>
+
+
+                    <h3>
+                        Discovery Call Auto-Booking
+                    </h3>
+
+
+                    <p>
+
+                        Streamlines discovery call scheduling by
+                        processing form submissions and creating
+                        events inside Google Calendar.
+
+                    </p>
+
+
+                    <div class="project-bottom">
+
+                        <div class="project-tools">
+
+                            <span>Zapier</span>
+                            <span>Forms</span>
+                            <span>Calendar</span>
+
+                        </div>
+
+
+                        <span class="view-project">
+                            View →
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- PROJECT 4 -->
+
+                <article
+                    class="project reveal"
+                    data-project="3">
+
+                    <div class="project-top">
+
+                        <span class="project-type">
+                            TASK AUTOMATION
+                        </span>
+
+                        <span class="project-number">
+                            04
+                        </span>
+
+                    </div>
+
+
+                    <div class="project-icon">
+                        📋
+                    </div>
+
+
+                    <h3>
+                        Production Task Delegation
+                    </h3>
+
+
+                    <p>
+
+                        Organizes onboarding information and helps
+                        automate task delegation using submitted
+                        Google Forms data and Trello.
+
+                    </p>
+
+
+                    <div class="project-bottom">
+
+                        <div class="project-tools">
+
+                            <span>Zapier</span>
+                            <span>Forms</span>
+                            <span>Trello</span>
+
+                        </div>
+
+
+                        <span class="view-project">
+                            View →
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- PROJECT 5 -->
+
+                <article
+                    class="project reveal"
+                    data-project="4">
+
+                    <div class="project-top">
+
+                        <span class="project-type">
+                            CONVERSATIONAL AI
+                        </span>
+
+                        <span class="project-number">
+                            05
+                        </span>
+
+                    </div>
+
+
+                    <div class="project-icon">
+                        🤖
+                    </div>
+
+
+                    <h3>
+                        24/7 Agency Inbound Support Bot
+                    </h3>
+
+
+                    <p>
+
+                        Conversational AI solution designed to assist
+                        with inbound inquiries and provide automated
+                        support interactions.
+
+                    </p>
+
+
+                    <div class="project-bottom">
+
+                        <div class="project-tools">
+
+                            <span>Zapier AI</span>
+                            <span>OpenAI</span>
+                            <span>Gemini</span>
+
+                        </div>
+
+
+                        <span class="view-project">
+                            View →
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- PROJECT 6 -->
+
+                <article
+                    class="project reveal"
+                    data-project="5">
+
+                    <div class="project-top">
+
+                        <span class="project-type">
+                            AI AGENT
+                        </span>
+
+                        <span class="project-number">
+                            06
+                        </span>
+
+                    </div>
+
+
+                    <div class="project-icon">
+                        🧠
+                    </div>
+
+
+                    <h3>
+                        Client Intake & Qualification Bot
+                    </h3>
+
+
+                    <p>
+
+                        AI-powered conversational workflow that
+                        collects client information and supports
+                        the lead qualification process.
+
+                    </p>
+
+
+                    <div class="project-bottom">
+
+                        <div class="project-tools">
+
+                            <span>Zapier AI</span>
+                            <span>OpenAI</span>
+                            <span>Gemini</span>
+
+                        </div>
+
+
+                        <span class="view-project">
+                            View →
+                        </span>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CTA
+    ========================== -->
+
+    <section class="cta reveal">
+
+        <span class="section-label">
+            LET'S AUTOMATE
+        </span>
+
+
+        <h2>
+
+            Turn repetitive work into
+            <span class="gradient-text">
+                intelligent workflows.
             </span>
 
-            <h2>
-                Tools I use to build
-                <span>smart systems.</span>
-            </h2>
+        </h2>
 
-        </div>
-
-
-        <div class="skills-grid">
-
-            <div class="skill-card">
-
-                <div class="skill-number">
-                    01
-                </div>
-
-                <h3>
-                    AI & Automation
-                </h3>
-
-                <div class="skill-tags">
-
-                    <span>ChatGPT</span>
-                    <span>Claude</span>
-                    <span>Google Gemini</span>
-                    <span>n8n</span>
-                    <span>Make.com</span>
-                    <span>Zapier</span>
-                    <span>AI Agents</span>
-                    <span>Workflow Automation</span>
-
-                </div>
-
-            </div>
-
-
-            <div class="skill-card">
-
-                <div class="skill-number">
-                    02
-                </div>
-
-                <h3>
-                    APIs & Integration
-                </h3>
-
-                <div class="skill-tags">
-
-                    <span>REST APIs</span>
-                    <span>Webhooks</span>
-                    <span>API Integration</span>
-                    <span>Postman</span>
-                    <span>Gmail</span>
-                    <span>Slack</span>
-                    <span>Discord</span>
-                    <span>Telegram</span>
-
-                </div>
-
-            </div>
-
-
-            <div class="skill-card">
-
-                <div class="skill-number">
-                    03
-                </div>
-
-                <h3>
-                    CRM & Marketing
-                </h3>
-
-                <div class="skill-tags">
-
-                    <span>GoHighLevel</span>
-                    <span>HubSpot</span>
-                    <span>Lead Management</span>
-                    <span>Sales Pipeline</span>
-                    <span>Appointment Automation</span>
-                    <span>CRM</span>
-
-                </div>
-
-            </div>
-
-
-            <div class="skill-card">
-
-                <div class="skill-number">
-                    04
-                </div>
-
-                <h3>
-                    Data & Productivity
-                </h3>
-
-                <div class="skill-tags">
-
-                    <span>Google Sheets</span>
-                    <span>Google Forms</span>
-                    <span>Google Calendar</span>
-                    <span>Notion</span>
-                    <span>Airtable</span>
-                    <span>Google Workspace</span>
-
-                </div>
-
-            </div>
-
-
-            <div class="skill-card">
-
-                <div class="skill-number">
-                    05
-                </div>
-
-                <h3>
-                    Development
-                </h3>
-
-                <div class="skill-tags">
-
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JavaScript</span>
-                    <span>Git</span>
-                    <span>GitHub</span>
-                    <span>VS Code</span>
-                    <span>MySQL</span>
-                    <span>XAMPP</span>
-                    <span>Laragon</span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- TOOL STACK -->
-    <section class="tools-section">
 
         <p>
-            AUTOMATION TOOL STACK
+
+            I build practical automation systems that connect
+            applications, organize information, and help businesses
+            spend less time on repetitive tasks.
+
         </p>
 
-        <div class="tools-marquee">
 
-            <div class="tools-track">
+        <a
+            href="mailto:johnleanardguiriba13@gmail.com"
+            class="btn btn-primary">
 
-                <span>⚡ Zapier</span>
-                <span>◉ n8n</span>
-                <span>⬡ Make</span>
-                <span>GHL</span>
-                <span>ChatGPT</span>
-                <span>Google Sheets</span>
-                <span>Notion</span>
-                <span>Airtable</span>
-                <span>HubSpot</span>
+            Start a Conversation
+            <span>↗</span>
 
-                <span>⚡ Zapier</span>
-                <span>◉ n8n</span>
-                <span>⬡ Make</span>
-                <span>GHL</span>
-                <span>ChatGPT</span>
+        </a>
+
+    </section>
+
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section
+        id="contact"
+        class="section">
+
+        <div class="container">
+
+            <div class="skills-header">
+
+                <span class="section-label">
+                    CONTACT
+                </span>
+
+
+                <h2 class="section-title reveal">
+
+                    Let's
+                    <span class="gradient-text">
+                        connect.
+                    </span>
+
+                </h2>
+
+
+                <p class="section-subtitle reveal">
+
+                    Interested in automation, AI workflows,
+                    integrations, or collaboration?
+                    Feel free to reach out.
+
+                </p>
 
             </div>
 
-        </div>
 
-    </section>
+            <div class="contact-grid">
 
 
-    <!-- PROJECTS -->
-    <section class="section projects-section" id="projects">
+                <a
+                    href="mailto:johnleanardguiriba13@gmail.com"
+                    class="contact-card reveal">
 
-        <div class="section-heading">
+                    <div class="contact-icon">
+                        ✉
+                    </div>
 
-            <span class="section-label">
-                CASE STUDIES
-            </span>
+                    <div>
 
-            <h2>
-                Automated systems
-                <span>& workflows.</span>
-            </h2>
+                        <small>
+                            EMAIL
+                        </small>
 
-        </div>
+                        <strong>
+                            johnleanardguiriba13@gmail.com
+                        </strong>
 
+                    </div>
 
-        <div class="project-grid">
+                </a>
 
 
-            <!-- PROJECT 1 -->
-            <article class="project-card">
+                <a
+                    href="https://www.linkedin.com/in/john-leanard-guiriba-1447413a8/"
+                    target="_blank"
+                    rel="noopener"
+                    class="contact-card reveal">
 
-                <div class="project-top">
+                    <div class="contact-icon">
+                        in
+                    </div>
 
-                    <span class="project-type">
-                        ZAPIER AUTOMATION
-                    </span>
+                    <div>
 
-                    <span class="project-number">
-                        01
-                    </span>
+                        <small>
+                            LINKEDIN
+                        </small>
 
-                </div>
+                        <strong>
+                            John Leanard Guiriba
+                        </strong>
 
-                <div class="project-icon">
-                    📩
-                </div>
+                    </div>
 
-                <h3>
-                    Inbound Gmail Automated Responder
-                </h3>
+                </a>
 
-                <p>
 
-                    An automated workflow designed to detect incoming
-                    messages and trigger responses, helping improve
-                    response time and reduce repetitive manual tasks.
+                <a
+                    href="https://github.com/johnleanardguiriba"
+                    target="_blank"
+                    rel="noopener"
+                    class="contact-card reveal">
 
-                </p>
+                    <div class="contact-icon">
+                        &lt;/&gt;
+                    </div>
 
-                <div class="project-stack">
+                    <div>
 
-                    <span>Zapier</span>
-                    <span>Gmail</span>
+                        <small>
+                            GITHUB
+                        </small>
 
-                </div>
+                        <strong>
+                            johnleanardguiriba
+                        </strong>
 
-            </article>
+                    </div>
 
+                </a>
 
-            <!-- PROJECT 2 -->
-            <article class="project-card">
-
-                <div class="project-top">
-
-                    <span class="project-type">
-                        LEAD AUTOMATION
-                    </span>
-
-                    <span class="project-number">
-                        02
-                    </span>
-
-                </div>
-
-                <div class="project-icon">
-                    📊
-                </div>
-
-                <h3>
-                    Real-Time Lead Tracking CRM Pipeline
-                </h3>
-
-                <p>
-
-                    A workflow that captures leads from Google Forms and
-                    automatically organizes the information inside
-                    Google Sheets for easier tracking and management.
-
-                </p>
-
-                <div class="project-stack">
-
-                    <span>Zapier</span>
-                    <span>Google Forms</span>
-                    <span>Google Sheets</span>
-
-                </div>
-
-            </article>
-
-
-            <!-- PROJECT 3 -->
-            <article class="project-card">
-
-                <div class="project-top">
-
-                    <span class="project-type">
-                        APPOINTMENT AUTOMATION
-                    </span>
-
-                    <span class="project-number">
-                        03
-                    </span>
-
-                </div>
-
-                <div class="project-icon">
-                    📅
-                </div>
-
-                <h3>
-                    Discovery Call Auto-Booking & Calendar Sync
-                </h3>
-
-                <p>
-
-                    A streamlined booking workflow that automatically
-                    processes form submissions and creates events in
-                    Google Calendar.
-
-                </p>
-
-                <div class="project-stack">
-
-                    <span>Zapier</span>
-                    <span>Google Forms</span>
-                    <span>Google Calendar</span>
-
-                </div>
-
-            </article>
-
-
-            <!-- PROJECT 4 -->
-            <article class="project-card">
-
-                <div class="project-top">
-
-                    <span class="project-type">
-                        TASK AUTOMATION
-                    </span>
-
-                    <span class="project-number">
-                        04
-                    </span>
-
-                </div>
-
-                <div class="project-icon">
-                    📋
-                </div>
-
-                <h3>
-                    Production Task Delegation & Onboarding Pipeline
-                </h3>
-
-                <p>
-
-                    An automated system that processes submitted
-                    information and helps organize onboarding and
-                    task delegation workflows.
-
-                </p>
-
-                <div class="project-stack">
-
-                    <span>Zapier</span>
-                    <span>Google Forms</span>
-                    <span>Trello</span>
-
-                </div>
-
-            </article>
-
-
-            <!-- PROJECT 5 -->
-            <article class="project-card featured-project">
-
-                <div class="project-top">
-
-                    <span class="project-type">
-                        CONVERSATIONAL AI
-                    </span>
-
-                    <span class="project-number">
-                        05
-                    </span>
-
-                </div>
-
-                <div class="project-icon">
-                    🤖
-                </div>
-
-                <h3>
-                    24/7 Agency Inbound Support Bot
-                </h3>
-
-                <p>
-
-                    A conversational AI agent designed to assist with
-                    inbound inquiries and provide automated support
-                    interactions.
-
-                </p>
-
-                <div class="project-stack">
-
-                    <span>Zapier AI Chatbots</span>
-                    <span>OpenAI</span>
-                    <span>Google Gemini</span>
-
-                </div>
-
-            </article>
-
-
-            <!-- PROJECT 6 -->
-            <article class="project-card featured-project">
-
-                <div class="project-top">
-
-                    <span class="project-type">
-                        AI AGENT
-                    </span>
-
-                    <span class="project-number">
-                        06
-                    </span>
-
-                </div>
-
-                <div class="project-icon">
-                    🧠
-                </div>
-
-                <h3>
-                    Interactive Client Intake & Qualification Bot
-                </h3>
-
-                <p>
-
-                    An AI-powered conversational workflow that collects
-                    client information and supports the qualification
-                    process through automated interactions.
-
-                </p>
-
-                <div class="project-stack">
-
-                    <span>Zapier AI Chatbots</span>
-                    <span>OpenAI</span>
-                    <span>Google Gemini</span>
-
-                </div>
-
-            </article>
-
-        </div>
-
-    </section>
-
-
-    <!-- CTA -->
-    <section class="cta-section">
-
-        <div class="cta-content">
-
-            <span class="section-label">
-                LET'S WORK TOGETHER
-            </span>
-
-            <h2>
-                Ready to automate
-                <span>the repetitive stuff?</span>
-            </h2>
-
-            <p>
-
-                Let's build smarter workflows, connected systems,
-                and automation solutions that help your business
-                save time and operate more efficiently.
-
-            </p>
-
-            <a href="mailto:johnleanardguiriba13@gmail.com"
-               class="btn primary-btn">
-
-                Start a Conversation
-                <span>↗</span>
-
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- CONTACT -->
-    <section class="section contact-section" id="contact">
-
-        <div class="section-heading center">
-
-            <span class="section-label">
-                CONTACT
-            </span>
-
-            <h2>
-                Let's
-                <span>connect.</span>
-            </h2>
-
-        </div>
-
-
-        <div class="contact-grid">
-
-            <a href="mailto:johnleanardguiriba13@gmail.com"
-               class="contact-card">
-
-                <div class="contact-icon">
-                    ✉
-                </div>
-
-                <div>
-
-                    <span>Email</span>
-
-                    <strong>
-                        johnleanardguiriba13@gmail.com
-                    </strong>
-
-                </div>
-
-            </a>
-
-
-            <a href="https://www.linkedin.com/in/john-leanard-guiriba-1447413a8/"
-               target="_blank"
-               class="contact-card">
-
-                <div class="contact-icon">
-                    in
-                </div>
-
-                <div>
-
-                    <span>LinkedIn</span>
-
-                    <strong>
-                        John Leanard Guiriba
-                    </strong>
-
-                </div>
-
-            </a>
-
-
-            <a href="https://github.com/johnleanardguiriba"
-               target="_blank"
-               class="contact-card">
-
-                <div class="contact-icon">
-                    &lt;/&gt;
-                </div>
-
-                <div>
-
-                    <span>GitHub</span>
-
-                    <strong>
-                        github.com/johnleanardguiriba
-                    </strong>
-
-                </div>
-
-            </a>
+            </div>
 
         </div>
 
@@ -872,31 +3886,532 @@
 </main>
 
 
-<!-- FOOTER -->
+
+<!-- =========================
+     FOOTER
+========================== -->
+
 <footer>
 
-    <div class="footer-logo">
+    <div class="container footer-inner">
 
-        <span>JG</span>
+        <div class="footer-brand">
+            JG • AI Automation Specialist
+        </div>
 
-        John Leanard Guiriba
+
+        <div>
+            © <span id="year"></span>
+            John Leanard B. Guiriba
+        </div>
+
+
+        <a
+            href="#home"
+            class="back-top">
+
+            Back to top ↑
+
+        </a>
 
     </div>
-
-    <p>
-        © <span id="year"></span>
-        John Leanard B. Guiriba.
-        AI Automation Specialist.
-    </p>
-
-    <a href="#home">
-        Back to top ↑
-    </a>
 
 </footer>
 
 
-<script src="script.js"></script>
+
+<!-- =========================
+     PROJECT MODAL
+========================== -->
+
+<div
+    class="modal"
+    id="projectModal">
+
+    <div class="modal-content">
+
+        <button
+            class="modal-close"
+            id="modalClose">
+
+            ×
+
+        </button>
+
+
+        <span
+            class="section-label"
+            id="modalType">
+
+            PROJECT
+
+        </span>
+
+
+        <h2 id="modalTitle">
+            Project Title
+        </h2>
+
+
+        <p id="modalDescription">
+            Project description.
+        </p>
+
+
+        <div
+            class="modal-stack"
+            id="modalStack">
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================== -->
+
+<script>
+
+
+    /* =========================
+       NAVBAR SCROLL
+    ========================== */
+
+    const header =
+        document.getElementById("header");
+
+
+    window.addEventListener(
+        "scroll",
+        () => {
+
+            if (
+                window.scrollY > 40
+            ) {
+
+                header.classList.add(
+                    "scrolled"
+                );
+
+            } else {
+
+                header.classList.remove(
+                    "scrolled"
+                );
+
+            }
+
+        }
+    );
+
+
+
+    /* =========================
+       MOBILE MENU
+    ========================== */
+
+    const menuBtn =
+        document.getElementById("menuBtn");
+
+    const nav =
+        document.getElementById("nav");
+
+
+    menuBtn.addEventListener(
+        "click",
+        () => {
+
+            nav.classList.toggle(
+                "active"
+            );
+
+        }
+    );
+
+
+    document
+        .querySelectorAll("#nav a")
+        .forEach(
+            link => {
+
+                link.addEventListener(
+                    "click",
+                    () => {
+
+                        nav.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+
+    /* =========================
+       FOOTER YEAR
+    ========================== */
+
+    document.getElementById("year")
+        .textContent =
+        new Date().getFullYear();
+
+
+
+    /* =========================
+       SCROLL REVEAL
+    ========================== */
+
+    const observer =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(
+                    entry => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target
+                                .classList
+                                .add("show");
+
+                            observer.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                threshold: .12
+            }
+        );
+
+
+    document
+        .querySelectorAll(".reveal")
+        .forEach(
+            element => {
+
+                observer.observe(
+                    element
+                );
+
+            }
+        );
+
+
+
+    /* =========================
+       PROJECT DATA
+    ========================== */
+
+    const projects = [
+
+        {
+
+            type:
+                "ZAPIER AUTOMATION",
+
+            title:
+                "Inbound Gmail Automated Responder",
+
+            description:
+                "An automated workflow designed to process incoming Gmail messages and trigger appropriate responses. The goal is to reduce repetitive communication tasks and improve response efficiency.",
+
+            tools:
+                [
+                    "Zapier",
+                    "Gmail",
+                    "Automation"
+                ]
+
+        },
+
+
+        {
+
+            type:
+                "LEAD AUTOMATION",
+
+            title:
+                "Real-Time Lead Tracking CRM Pipeline",
+
+            description:
+                "A lead management workflow that captures information from Google Forms and automatically organizes the data inside Google Sheets, making lead tracking easier and more structured.",
+
+            tools:
+                [
+                    "Zapier",
+                    "Google Forms",
+                    "Google Sheets",
+                    "CRM"
+                ]
+
+        },
+
+
+        {
+
+            type:
+                "APPOINTMENT AUTOMATION",
+
+            title:
+                "Discovery Call Auto-Booking & Calendar Sync",
+
+            description:
+                "A scheduling workflow that processes discovery call form submissions and automatically creates calendar events, reducing manual scheduling work.",
+
+            tools:
+                [
+                    "Zapier",
+                    "Google Forms",
+                    "Google Calendar"
+                ]
+
+        },
+
+
+        {
+
+            type:
+                "TASK AUTOMATION",
+
+            title:
+                "Production Task Delegation & Onboarding Pipeline",
+
+            description:
+                "An automation workflow that processes onboarding information and helps organize production tasks through Trello, making task delegation more structured.",
+
+            tools:
+                [
+                    "Zapier",
+                    "Google Forms",
+                    "Trello"
+                ]
+
+        },
+
+
+        {
+
+            type:
+                "CONVERSATIONAL AI",
+
+            title:
+                "24/7 Agency Inbound Support Bot",
+
+            description:
+                "A conversational AI concept designed to assist agencies with inbound inquiries and automated support interactions using AI chatbot technology.",
+
+            tools:
+                [
+                    "Zapier AI Chatbots",
+                    "OpenAI",
+                    "Google Gemini"
+                ]
+
+        },
+
+
+        {
+
+            type:
+                "AI AGENT",
+
+            title:
+                "Interactive Client Intake & Qualification Bot",
+
+            description:
+                "An AI-powered client intake workflow that collects relevant information through conversation and supports the lead qualification process.",
+
+            tools:
+                [
+                    "Zapier AI Chatbots",
+                    "OpenAI",
+                    "Google Gemini"
+                ]
+
+        }
+
+    ];
+
+
+
+    /* =========================
+       PROJECT MODAL
+    ========================== */
+
+    const modal =
+        document.getElementById(
+            "projectModal"
+        );
+
+
+    const modalClose =
+        document.getElementById(
+            "modalClose"
+        );
+
+
+    const modalType =
+        document.getElementById(
+            "modalType"
+        );
+
+
+    const modalTitle =
+        document.getElementById(
+            "modalTitle"
+        );
+
+
+    const modalDescription =
+        document.getElementById(
+            "modalDescription"
+        );
+
+
+    const modalStack =
+        document.getElementById(
+            "modalStack"
+        );
+
+
+    document
+        .querySelectorAll(".project")
+        .forEach(
+            card => {
+
+                card.addEventListener(
+                    "click",
+                    () => {
+
+                        const index =
+                            Number(
+                                card.dataset.project
+                            );
+
+                        const project =
+                            projects[index];
+
+
+                        modalType.textContent =
+                            project.type;
+
+
+                        modalTitle.textContent =
+                            project.title;
+
+
+                        modalDescription.textContent =
+                            project.description;
+
+
+                        modalStack.innerHTML =
+                            "";
+
+
+                        project.tools.forEach(
+                            tool => {
+
+                                const tag =
+                                    document.createElement(
+                                        "span"
+                                    );
+
+                                tag.textContent =
+                                    tool;
+
+                                modalStack.appendChild(
+                                    tag
+                                );
+
+                            }
+                        );
+
+
+                        modal.classList.add(
+                            "active"
+                        );
+
+
+                        document.body
+                            .classList.add(
+                                "modal-open"
+                            );
+
+                    }
+                );
+
+            }
+        );
+
+
+
+    modalClose.addEventListener(
+        "click",
+        closeModal
+    );
+
+
+    modal.addEventListener(
+        "click",
+        event => {
+
+            if (
+                event.target === modal
+            ) {
+
+                closeModal();
+
+            }
+
+        }
+    );
+
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                closeModal();
+
+            }
+
+        }
+    );
+
+
+    function closeModal() {
+
+        modal.classList.remove(
+            "active"
+        );
+
+        document.body
+            .classList.remove(
+                "modal-open"
+            );
+
+    }
+
+
+</script>
 ```
 
 </body>
